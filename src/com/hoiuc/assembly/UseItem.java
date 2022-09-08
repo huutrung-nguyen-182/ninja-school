@@ -17,7 +17,7 @@ import java.util.Date;
 public class UseItem {
     static int[] arrOp = new int[] { 6, 7, 10, 67, 68, 69, 70, 71, 72, 73, 74 };
     static int[] arrParam = new int[] { 50, 50, 10, 5, 10, 10, 5, 5, 5, 100, 50 };
-    private static byte[] arrOpenBag = new byte[] { 0, 6, 6, 12 };
+    private static byte[] arrOpenBag = new byte[] { 0, 6, 6, 120 };
     private static Object LOCK = new Object();
 
     public static short[] idItemRuongMayMan = new short[]{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 7,7,7 , 8, 8,8, 9,9,242,242,242, 280, 284,284, 285, 436 };

@@ -25,13 +25,13 @@ public class GameSrc {
     //private static int[] ArryenLuck;
     public static byte[] ArrdayLuck;
 
-    public static long[] upExpSkillClone = new long[] {500000, 1000000, 3000000, 5000000, 10000000, 30000000, 50000000, 100000000, 300000000};
+    public static long[] upExpSkillClone = new long[]{500000, 1000000, 3000000, 5000000, 10000000, 30000000, 50000000, 100000000, 300000000};
 
-    public static int[] arrNgocRong = new int[] {222, 223, 224, 225, 226, 227, 228};
+    public static int[] arrNgocRong = new int[]{222, 223, 224, 225, 226, 227, 228};
 
-    public static int[] coinUpMat = new int[] {250000, 500000, 1250000, 2000000, 4000000, 10000000, 20000000, 35000000, 50000000, 100000000};
-    public static int[] goldUpMat = new int[] {10, 40, 60, 85, 120, 150, 190, 235, 285, 350};
-    public static int[] percentUpMat = new int[] {100, 50, 35, 25, 20, 15, 10, 7, 5, 2};
+    public static int[] coinUpMat = new int[]{250000, 500000, 1250000, 2000000, 4000000, 10000000, 20000000, 35000000, 50000000, 100000000};
+    public static int[] goldUpMat = new int[]{10, 40, 60, 85, 120, 150, 190, 235, 285, 350};
+    public static int[] percentUpMat = new int[]{100, 50, 35, 25, 20, 15, 10, 7, 5, 2};
 
     public static int[] arrModIdTaThu30 = new int[]{30, 33, 35, 37};
     public static int[] arrModIdTaThu40 = new int[]{40, 43, 45, 47, 49};
@@ -39,39 +39,26 @@ public class GameSrc {
     public static int[] arrModIdTaThu60 = new int[]{61, 65, 67, 63};
     public static int[] arrModIdTaThu70 = new int[]{129, 132, 135};
     public static int[] arrModIdTaThu70_2 = new int[]{71, 74, 77};
-    public static int[] arrModIdTaThu80 = new int[]{130,137};
-    public static int[] arrModIdTaThu80_2 = new int[]{80,88};
+    public static int[] arrModIdTaThu80 = new int[]{130, 137};
+    public static int[] arrModIdTaThu80_2 = new int[]{80, 88};
     public static int[] arrModIdTaThu100 = new int[]{133};
 
     private static final HashMap<Integer, Integer> xuGotNgoc = new HashMap();
     public static final HashMap<Integer, Integer> exps = new HashMap();
-    private static int[][] arrNgocKhamEXP = new int[][]{
-            new int[2],
-            new int[]{200, 10},
-            new int[]{500, 20},
-            new int[]{1000, 50},
-            new int[]{2000, 100},
-            new int[]{5000, 200},
-            new int[]{10000, 500},
-            new int[]{20000, 1000},
-            new int[]{50000, 2000},
-            new int[]{100000, 5000},
-            new int[]{100000, 10000}
-    };
-    private static int[][] arrLuyenNgocEXP = new int[][]{
-            new int[2],
-            new int[]{200, 0},
-            new int[]{500, 200},
-            new int[]{1000, 500},
-            new int[]{2000, 1000},
-            new int[]{5000, 2000},
-            new int[]{10000, 5000},
-            new int[]{20000, 10000},
-            new int[]{50000, 20000},
-            new int[]{100000, 50000},
-            new int[]{110000, 100000}
-    };
+    private static int[][] arrNgocKhamEXP = new int[][]{new int[2], new int[]{200, 10}, new int[]{500, 20}, new int[]{1000, 50}, new int[]{2000, 100}, new int[]{5000, 200}, new int[]{10000, 500}, new int[]{20000, 1000}, new int[]{50000, 2000}, new int[]{100000, 5000}, new int[]{100000, 10000}};
+    private static int[][] arrLuyenNgocEXP = new int[][]{new int[2], new int[]{200, 0}, new int[]{500, 200}, new int[]{1000, 500}, new int[]{2000, 1000}, new int[]{5000, 2000}, new int[]{10000, 5000}, new int[]{20000, 10000}, new int[]{50000, 20000}, new int[]{100000, 50000}, new int[]{110000, 100000}};
     public static int[] coinGotngoc = new int[]{0, 5000, 40000, 135000, 320000, 625000, 1080000, 1715000, 2560000, 3645000, 5000000};
+
+    public static int[] arrGiay = new int[]{132, 133, 317, 326, 355, 364, 500, 501, 626, 627};
+    public static int[] arrBua = new int[]{178, 178, 318, 318, 356, 356, 502, 502, 628, 628};
+    public static int[] arrQuan = new int[]{142, 143, 319, 327, 357, 365, 496, 497, 622, 623};
+    public static int[] arrBoi = new int[]{183, 183, 320, 320, 358, 358, 503, 629, 629};
+    public static int[] arrGang = new int[]{152, 153, 321, 328, 359, 366, 498, 499, 624, 625};
+    public static int[] arrNhan = new int[]{188, 188, 322, 322, 360, 360, 504, 504, 630, 630};
+    public static int[] arrAo = new int[]{162, 163, 323, 329, 361, 367, 494, 495, 620, 621};
+    public static int[] arrDayChuyen = new int[]{193, 193, 324, 324, 362, 362, 505, 505, 631, 631};
+    public static int[] arrNon = new int[]{172, 173, 325, 330, 363, 368, 492, 493, 618, 619};
+    public static int[] arrVuKhi = new int[]{98, 103, 108, 113, 118, 123, 331, 332, 333, 334, 335, 336, 369, 370, 371, 372, 373, 374, 506, 507, 508, 509, 510, 511, 632, 633, 634, 635, 636, 637};
 
     public static boolean mapNotPK(int mapId) {
         return mapId == 1 || mapId == 10 || mapId == 17 || mapId == 22 || mapId == 27 || mapId == 32 || mapId == 38 || mapId == 43 || mapId == 48 || mapId == 72 || mapId == 109 || mapId == 121 || mapId == 122 || mapId == 123; //138
@@ -90,7 +77,7 @@ public class GameSrc {
         if (upgrade >= 4) {
             return 4;
         }
-        return (byte)upgrade;
+        return (byte) upgrade;
     }
 
     public static byte SysClass(byte nclass) {
@@ -191,8 +178,7 @@ public class GameSrc {
             m.writer().flush();
             p.conn.sendMessage(m);
             m.cleanup();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -202,7 +188,7 @@ public class GameSrc {
             int id = m.reader().readInt();
             m.cleanup();
             int zoomLv = p.conn.zoomLevel;
-            if(zoomLv < 1 || zoomLv > 4){
+            if (zoomLv < 1 || zoomLv > 4) {
                 zoomLv = 1;
             }
             ByteArrayOutputStream a = loadFile("res/assets/icon/" + zoomLv + "/Small" + id + ".png");
@@ -222,13 +208,13 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
     }
 
-    public static void reciveImageMOB(Player p, Message m){
+    public static void reciveImageMOB(Player p, Message m) {
         try {
             int id = m.reader().readUnsignedByte();
             MobTemplate mob = MobTemplate.getMob(id);
@@ -237,10 +223,10 @@ public class GameSrc {
             }
             Util.Debug(mob.id + " Id mob " + id);
             int zoomLv = p.conn.zoomLevel;
-            if(zoomLv < 1 || zoomLv > 4){
+            if (zoomLv < 1 || zoomLv > 4) {
                 zoomLv = 1;
             }
-            ByteArrayOutputStream a = loadFile("Monster/x"+zoomLv+"/"+id);
+            ByteArrayOutputStream a = loadFile("Monster/x" + zoomLv + "/" + id);
             if (a != null) {
                 a.flush();
                 byte[] ab = a.toByteArray();
@@ -253,7 +239,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -275,8 +261,7 @@ public class GameSrc {
             byteArrayOutputStream.close();
             openFileInput.close();
             return byteArrayOutputStream;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
@@ -293,8 +278,7 @@ public class GameSrc {
             fos.write(data);
             fos.flush();
             fos.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -310,7 +294,7 @@ public class GameSrc {
                 break;
             }
             case 4: {
-                if(p.menuCaiTrang == 0) {
+                if (p.menuCaiTrang == 0) {
                     arrItem = p.c.ItemBox;
                 }
                 break;
@@ -420,16 +404,14 @@ public class GameSrc {
                     }
                     m.writer().writeBoolean(item.isExpires);
                     m.writer().writeShort(item.quantity);
-                }
-                else {
+                } else {
                     m.writer().writeShort(-1);
                 }
             }
             m.writer().flush();
             p.conn.sendMessage(m);
             m.cleanup();
-        }
-        else {
+        } else {
             m = new Message(33);
             m.writer().writeByte(type);
             m.writer().writeByte(arrItem.length);
@@ -460,7 +442,7 @@ public class GameSrc {
             if (num <= 0 || sell == null) {
                 return;
             }
-            if(sell.id == 539 && (p.c.countBuyX3 <= 0 || num > p.c.countBuyX3)) {
+            if (sell.id == 539 && (p.c.countBuyX3 <= 0 || num > p.c.countBuyX3)) {
                 p.conn.sendMessageLog("Mỗi ngày bạn chỉ có thể mua tối đa 6 nấm X3");
                 return;
             }
@@ -476,14 +458,11 @@ public class GameSrc {
                 ClanManager clan = ClanManager.getClanName(p.c.clan.clanName);
                 if (clan == null) {
                     p.conn.sendMessageLog("Bạn cần có gia tộc.");
-                }
-                else if (p.c.clan.typeclan < 3) {
+                } else if (p.c.clan.typeclan < 3) {
                     p.conn.sendMessageLog("Chỉ có tộc trường hoặc tộc phó mới có thể mua.");
-                }
-                else if ((sell.id == 423 && clan.itemLevel < 1) || (sell.id == 424 && clan.itemLevel < 2) || (sell.id == 425 && clan.itemLevel < 3) || (sell.id == 426 && clan.itemLevel < 4) || (sell.id == 427 && clan.itemLevel < 5)) {
+                } else if ((sell.id == 423 && clan.itemLevel < 1) || (sell.id == 424 && clan.itemLevel < 2) || (sell.id == 425 && clan.itemLevel < 3) || (sell.id == 426 && clan.itemLevel < 4) || (sell.id == 427 && clan.itemLevel < 5)) {
                     p.conn.sendMessageLog("Cần khai mở gia tộc để mua vật phẩm này");
-                }
-                else {
+                } else {
                     if (buycoin > clan.coin) {
                         p.conn.sendMessageLog("Ngân sách gia tộc không đủ.");
                         return;
@@ -502,13 +481,11 @@ public class GameSrc {
                         m.writer().flush();
                         clan.sendMessage(m);
                         m.cleanup();
-                    }
-                    else {
+                    } else {
                         p.conn.sendMessageLog("Chưa hỗ trợ");
                     }
                 }
-            }
-            else if ((!data.isUpToUp && p.c.getBagNull() >= num) || (data.isUpToUp && p.c.getIndexBagid(sell.id, sell.isLock) != -1) || (data.isUpToUp && p.c.getBagNull() > 0)) {
+            } else if ((!data.isUpToUp && p.c.getBagNull() >= num) || (data.isUpToUp && p.c.getIndexBagid(sell.id, sell.isLock) != -1) || (data.isUpToUp && p.c.getBagNull() > 0)) {
                 if (p.c.xu < buycoin) {
                     p.conn.sendMessageLog("Không đủ xu");
                     return;
@@ -529,7 +506,7 @@ public class GameSrc {
                 for (j = 0; j < num; ++j) {
                     item = new Item();
                     item.id = sell.id;
-                    if(sell.id == 539) {
+                    if (sell.id == 539) {
                         p.c.countBuyX3--;
                     }
                     if (sell.isLock) {
@@ -558,14 +535,13 @@ public class GameSrc {
                     p.c.addItemBag(false, item);
                 }
                 Service.updateCost(p);
-            }
-            else {
+            } else {
                 p.conn.sendMessageLog("Hành trang không đủ chỗ trống");
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -598,7 +574,7 @@ public class GameSrc {
                 item1.isLock = true;
                 item2.isLock = true;
                 byte upgrade = item1.upgrade;
-                item1.upgradeNext((byte)(-item1.upgrade));
+                item1.upgradeNext((byte) (-item1.upgrade));
                 item2.upgradeNext(upgrade);
                 m = new Message(-28);
                 m.writer().writeByte(-88);
@@ -614,7 +590,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -658,7 +634,7 @@ public class GameSrc {
             byte j;
             for (j = 0; j < GameSrc.crystals.length; ++j) {
                 if (crys > GameSrc.crystals[j]) {
-                    id = (short)(j + 1);
+                    id = (short) (j + 1);
                 }
             }
             if (id > 11) {
@@ -674,15 +650,13 @@ public class GameSrc {
                     return;
                 }
                 p.c.upxu(-GameSrc.coinUpCrystals[id]);
-            }
-            else {
+            } else {
                 if (GameSrc.coinUpCrystals[id] > p.c.xu + p.c.yen) {
                     return;
                 }
                 if (p.c.yen >= GameSrc.coinUpCrystals[id]) {
                     p.c.upyen(-GameSrc.coinUpCrystals[id]);
-                }
-                else {
+                } else {
                     int coin = GameSrc.coinUpCrystals[id] - p.c.yen;
                     p.c.upyen(-p.c.yen);
                     p.c.upxu(-coin);
@@ -693,21 +667,20 @@ public class GameSrc {
             if (Util.nextInt(1, 100) <= percen) {
                 suc = true;
                 item2.id = id;
-                if(item2.id == 10 && p.c.isTaskDanhVong == 1 && p.c.taskDanhVong[0] == 3) {
+                if (item2.id == 10 && p.c.isTaskDanhVong == 1 && p.c.taskDanhVong[0] == 3) {
                     p.c.taskDanhVong[1]++;
-                    if(p.c.taskDanhVong[1] == p.c.taskDanhVong[2]) {
+                    if (p.c.taskDanhVong[1] == p.c.taskDanhVong[2]) {
                         p.sendAddchatYellow("Bạn đã hoàn thành nhiệm vụ danh vọng.");
                     }
                 }
-            }
-            else {
-                item2.id = (short)(id - 1);
+            } else {
+                item2.id = (short) (id - 1);
             }
             item2.isLock = false;
             byte k;
             for (k = 0; k < arrItem.length; ++k) {
                 if (arrItem[k] != -1) {
-                    if(!isCoin || (p.c.ItemBag[arrItem[k]]!= null && p.c.ItemBag[arrItem[k]].isLock)) {
+                    if (!isCoin || (p.c.ItemBag[arrItem[k]] != null && p.c.ItemBag[arrItem[k]].isLock)) {
                         item2.isLock = true;
                     }
                     p.c.ItemBag[arrItem[k]] = null;
@@ -724,8 +697,7 @@ public class GameSrc {
             m.writer().writeBoolean(item2.isExpires);
             if (isCoin) {
                 m.writer().writeInt(p.c.xu);
-            }
-            else {
+            } else {
                 m.writer().writeInt(p.c.yen);
                 m.writer().writeInt(p.c.xu);
             }
@@ -735,7 +707,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -776,8 +748,7 @@ public class GameSrc {
                         arrItem[i] = index2;
                         crys += GameSrc.crystals[item2.id];
                         da = true;
-                    }
-                    else {
+                    } else {
                         if (data.type != 28) {
                             p.conn.sendMessageLog("Chỉ có thể chọn đá và bảo hiểm");
                             return;
@@ -785,14 +756,11 @@ public class GameSrc {
                         arrItem[i] = index2;
                         if (item2.id == 242 && item.upgrade < 8) {
                             keep = true;
-                        }
-                        else if (item2.id == 284 && item.upgrade < 12) {
+                        } else if (item2.id == 284 && item.upgrade < 12) {
                             keep = true;
-                        }
-                        else if (item2.id == 285 && item.upgrade < 14) {
+                        } else if (item2.id == 285 && item.upgrade < 14) {
                             keep = true;
-                        }
-                        else {
+                        } else {
                             if (item2.id != 475) {
                                 p.conn.sendMessageLog("Bảo hiểm không phù hợp");
                                 return;
@@ -820,15 +788,13 @@ public class GameSrc {
                 if (percen > GameSrc.maxPercents[item.upgrade]) {
                     percen = GameSrc.maxPercents[item.upgrade];
                 }
-            }
-            else if (data.type % 2 == 0) {
+            } else if (data.type % 2 == 0) {
                 coins = GameSrc.coinUpClothes[item.upgrade];
                 percen = crys * 100 / GameSrc.upClothe[item.upgrade];
                 if (percen > GameSrc.maxPercents[item.upgrade]) {
                     percen = GameSrc.maxPercents[item.upgrade];
                 }
-            }
-            else {
+            } else {
                 coins = GameSrc.coinUpAdorns[item.upgrade];
                 percen = crys * 100 / GameSrc.upAdorn[item.upgrade];
                 if (percen > GameSrc.maxPercents[item.upgrade]) {
@@ -836,10 +802,10 @@ public class GameSrc {
                 }
             }
             if (type == 1) {
-                percen += percen/2;
+                percen += percen / 2;
                 gold = GameSrc.goldUps[item.upgrade];
             }
-            if (coins/1000 > (p.c.yen + p.c.xu)/1000 || gold > p.luong) {
+            if (coins / 1000 > (p.c.yen + p.c.xu) / 1000 || gold > p.luong) {
                 return;
             }
             byte j;
@@ -851,14 +817,13 @@ public class GameSrc {
             p.upluong(-gold);
             if (coins <= p.c.yen) {
                 p.c.upyen(-coins);
-            }
-            else if (coins >= p.c.yen) {
+            } else if (coins >= p.c.yen) {
                 int coin = coins - p.c.yen;
                 p.c.upyen(-p.c.yen);
                 p.c.upxu(-coin);
             }
             boolean suc = false;
-            if(item.upgrade <= 8) {
+            if (item.upgrade <= 8) {
                 suc = Util.nextInt(1, 100) <= percen;
             } else {
                 suc = Util.nextInt(1, 150) <= percen;
@@ -867,10 +832,9 @@ public class GameSrc {
             item.isLock = true;
             Util.Debug("type " + type + " index " + index + " percen " + percen);
             if (suc) {
-                item.upgradeNext((byte)1);
-            }
-            else if (!keep) {
-                item.upgradeNext((byte)(-(item.upgrade - KeepUpgrade(item.upgrade))));
+                item.upgradeNext((byte) 1);
+            } else if (!keep) {
+                item.upgradeNext((byte) (-(item.upgrade - KeepUpgrade(item.upgrade))));
             }
             m = new Message(21);
             m.writer().writeByte(suc ? 1 : 0);
@@ -881,11 +845,10 @@ public class GameSrc {
             m.writer().flush();
             p.conn.sendMessage(m);
             m.cleanup();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -913,13 +876,11 @@ public class GameSrc {
                 for (byte i = 0; i < item.upgrade; ++i) {
                     num += GameSrc.upWeapon[i];
                 }
-            }
-            else if (data.type % 2 == 0) {
+            } else if (data.type % 2 == 0) {
                 for (byte i = 0; i < item.upgrade; ++i) {
                     num += GameSrc.upClothe[i];
                 }
-            }
-            else {
+            } else {
                 for (byte i = 0; i < item.upgrade; ++i) {
                     num += GameSrc.upAdorn[i];
                 }
@@ -930,7 +891,7 @@ public class GameSrc {
             for (int n = GameSrc.crystals.length - 1; n >= 0; --n) {
                 if (num >= GameSrc.crystals[n]) {
                     arrItem[num2] = new Item();
-                    arrItem[num2].id = (short)n;
+                    arrItem[num2].id = (short) n;
                     arrItem[num2].isLock = item.isLock;
                     num -= GameSrc.crystals[n];
                     n++;
@@ -949,7 +910,7 @@ public class GameSrc {
                     arrIndex[j] = index2;
                 }
             }
-            item.upgradeNext((byte)(-item.upgrade));
+            item.upgradeNext((byte) (-item.upgrade));
             m = new Message(22);
             m.writer().writeByte(num2);
             for (byte j = 0; j < num2; ++j) {
@@ -964,7 +925,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -986,63 +947,202 @@ public class GameSrc {
                 return;
             }
 
-            if(p.c.isTaskDanhVong == 1 && p.c.taskDanhVong[0] == 4) {
+            if (p.c.isTaskDanhVong == 1 && p.c.taskDanhVong[0] == 4) {
                 p.c.taskDanhVong[1]++;
-                if(p.c.taskDanhVong[1] == p.c.taskDanhVong[2]) {
+                if (p.c.taskDanhVong[1] == p.c.taskDanhVong[2]) {
                     p.sendAddchatYellow("Bạn đã hoàn thành nhiệm vụ danh vọng.");
                 }
             }
 
             p.c.removeItemBags(340, 1);
             short id = GameSrc.ArridLuck[Util.nextInt(GameSrc.ArridLuck.length)];
-            switch (id) {
-                case -1: {
-                    if(p.c.gender == 1) {
-                        id = 741;
-                    } else {
-                        id = 768;
-                    }
-                    break;
+            if (id == -1) {
+                if (p.c.gender == 1) {
+                    id = (short) Util.nextInt(733, 741);
+                } else {
+                    id = (short) Util.nextInt(760, 768);
                 }
-                case -2: {
-                    if(p.c.gender == 1) {
-                        id = (short)Util.nextInt(733,734);
-                    } else {
-                        id = (short)Util.nextInt(760,761);
+            }
+
+            if (id == -2) {
+                switch (Util.nextInt(0, 9)) {
+                    case 0: {
+                        //Vu khi
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 6 + p.c.nclass - 1;
+                        id = (short) arrVuKhi[i];
+                        break;
                     }
-                    break;
-                }
-                case -3: {
-                    if(p.c.gender == 1) {
-                        id = (short)Util.nextInt(737,738);
-                    } else {
-                        id = (short)Util.nextInt(764,765);
+                    case 1: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrGiay[i];
+                        break;
                     }
-                    break;
-                }
-                case -4: {
-                    if(p.c.gender == 1) {
-                        id = (short)Util.nextInt(739,740);
-                    } else {
-                        id = (short)Util.nextInt(766,767);
+                    case 2: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrBua[i];
+                        break;
                     }
-                    break;
+                    case 3: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrQuan[i];
+                        break;
+                    }
+                    case 4: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrBoi[i];
+                        break;
+                    }
+                    case 5: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrGang[i];
+                        break;
+                    }
+                    case 6: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrNhan[i];
+                        break;
+                    }
+                    case 7: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrAo[i];
+                        break;
+                    }
+                    case 8: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrDayChuyen[i];
+                        break;
+                    }
+                    case 9: {
+                        int s;
+                        if (p.c.level < 50) {
+                            s = 0;
+                        } else {
+                            s = p.c.level / 10 - 5;
+                            if (s > 4) s = 4;
+                        }
+                        int q = Util.nextInt(s, 4);
+                        int i = q * 2;
+                        if (p.c.gender == 0) {
+                            i++;
+                        }
+                        id = (short) arrNon[i];
+                        break;
+                    }
                 }
             }
 
             ItemTemplate data = ItemTemplate.ItemTemplateId(id);
             Item item;
+            if (data == null) {
+                Util.Debug("id = " + id);
+                return;
+            }
             if (data.type < 10) {
                 if (data.type == 1) {
                     item = ItemTemplate.itemDefault(id);
                     item.sys = SysClass(data.nclass);
-                }
-                else {
-                    byte sys = (byte)Util.nextInt(1, 3);
+                } else {
+//                    byte sys = (byte) Util.nextInt(1, 3);
+                    byte sys = SysClass(p.c.nclass);
                     item = ItemTemplate.itemDefault(id, sys);
                 }
-            }
-            else {
+            } else {
                 item = ItemTemplate.itemDefault(id);
             }
             if (id == 523 || id == 419) {
@@ -1050,8 +1150,8 @@ public class GameSrc {
                 item.expires = Util.TimeDay(GameSrc.ArrdayLuck[Util.nextInt(GameSrc.ArrdayLuck.length)]);
             }
             if (data.type != 19) {
-                if(item.id == 733 || item.id == 734 || item.id == 760 || item.id == 761 || (item.id >= 737 && item.id <= 741) || (item.id >= 764 && item.id <= 768) ) {
-                    item.quantity = 1;
+                if ((item.id >= 733 && item.id <= 741) || (item.id >= 760 && item.id <= 768)) {
+                    item.quantity = 10;
                     item.isLock = true;
                     item.isExpires = false;
                     item.expires = -1L;
@@ -1068,8 +1168,7 @@ public class GameSrc {
             for (i = 0; i < 9; ++i) {
                 if (i == index) {
                     m.writer().writeShort(id);
-                }
-                else {
+                } else {
                     m.writer().writeShort(GameSrc.ArridLuck[Util.nextInt(GameSrc.ArridLuck.length)]);
                 }
             }
@@ -1079,7 +1178,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -1094,24 +1193,24 @@ public class GameSrc {
 
         p.endDlg(true);
 
-        if(arrItem.length == 4) {
+        if (arrItem.length == 4) {
             byte i;
             byte index2;
-            for(i=0; i<arrItem.length; i++) {
+            for (i = 0; i < arrItem.length; i++) {
                 index2 = m.reader().readByte();
                 item = p.c.getIndexBag(index2);
-                if(item.id == 455) {
+                if (item.id == 455) {
                     checkTTS++;
-                    checkTTT=0;
-                } else if(item.id == 456) {
+                    checkTTT = 0;
+                } else if (item.id == 456) {
                     checkTTT++;
-                    checkTTS=0;
+                    checkTTS = 0;
                 }
                 p.c.removeItemBag(index2, 1);
             }
-            if(checkTTS>0) {
+            if (checkTTS > 0) {
                 p.c.addItemBag(false, ItemTemplate.itemDefault(456));
-            } else if(checkTTT>0){
+            } else if (checkTTT > 0) {
                 p.c.addItemBag(false, ItemTemplate.itemDefault(457));
             }
             return;
@@ -1119,17 +1218,17 @@ public class GameSrc {
         } else if (arrItem.length == 9) {
             byte i;
             byte index2;
-            for(i=0; i<arrItem.length; i++) {
+            for (i = 0; i < arrItem.length; i++) {
                 index2 = m.reader().readByte();
-                if(i==0) {
+                if (i == 0) {
                     item = p.c.getIndexBag(index2);
                 }
                 p.c.removeItemBag(index2, 1);
             }
 
-            if(item.id == 455) {
+            if (item.id == 455) {
                 p.c.addItemBag(false, ItemTemplate.itemDefault(456));
-            } else if(item.id == 456){
+            } else if (item.id == 456) {
                 p.c.addItemBag(false, ItemTemplate.itemDefault(457));
             }
             return;
@@ -1181,11 +1280,9 @@ public class GameSrc {
                 arit[j] = ind;
                 if (item.id == 455) {
                     ++ttts;
-                }
-                else if (item.id == 456) {
+                } else if (item.id == 456) {
                     ++tttt;
-                }
-                else if (item.id == 457) {
+                } else if (item.id == 457) {
                     ++tttc;
                 }
             }
@@ -1285,7 +1382,7 @@ public class GameSrc {
             p.endLoad(true);
             p.c.upyenMessage(-yen);
 
-            if (percent >= Util.nextInt(140)) {
+            if (percent >= Util.nextInt(1)) {
                 Option option;
                 for (j = 0; j < it.options.size(); ++j) {
                     option = it.options.get(j);
@@ -1293,8 +1390,7 @@ public class GameSrc {
                 }
                 Service.requestItemInfoMessage(p, it, index, 3);
                 p.sendAddchatYellow("Tinh luyện thành công!");
-            }
-            else {
+            } else {
                 p.sendAddchatYellow("Tinh luyện thất bại!");
             }
             for (j = 0; j < arit.length; ++j) {
@@ -1303,7 +1399,7 @@ public class GameSrc {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -1339,24 +1435,22 @@ public class GameSrc {
                 case 0: {
                     if (item.sys == 1) {
                         item.options.add(new Option(96, 10));
-                    }
-                    else if (item.sys == 2) {
+                    } else if (item.sys == 2) {
                         item.options.add(new Option(95, 10));
-                    }
-                    else if (item.sys == 3) {
+                    } else if (item.sys == 3) {
                         item.options.add(new Option(97, 10));
                     }
                     item.options.add(new Option(79, 5));
                     break;
                 }
                 case 1: {
-                    item.options.add(new Option(87, Util.nextInt(250, 400)));
-                    item.options.add(new Option(87 + item.sys, Util.nextInt(350, 600)));
+                    item.options.add(new Option(87, Util.nextInt(400, 400)));
+                    item.options.add(new Option(87 + item.sys, Util.nextInt(600, 600)));
                     break;
                 }
                 case 2: {
-                    item.options.add(new Option(80, Util.nextInt(20, 50)));
-                    item.options.add(new Option(91, Util.nextInt(9, 11)));
+                    item.options.add(new Option(80, Util.nextInt(50, 50)));
+                    item.options.add(new Option(91, Util.nextInt(11, 11)));
                     break;
                 }
                 case 3: {
@@ -1365,49 +1459,45 @@ public class GameSrc {
                     break;
                 }
                 case 4: {
-                    item.options.add(new Option(86, Util.nextInt(80, 124)));
-                    item.options.add(new Option(94, Util.nextInt(80, 124)));
+                    item.options.add(new Option(86, Util.nextInt(124, 124)));
+                    item.options.add(new Option(94, Util.nextInt(124, 124)));
                     break;
                 }
                 case 5: {
                     if (item.sys == 1) {
                         item.options.add(new Option(96, 5));
-                    }
-                    else if (item.sys == 2) {
+                    } else if (item.sys == 2) {
                         item.options.add(new Option(95, 5));
-                    }
-                    else if (item.sys == 3) {
+                    } else if (item.sys == 3) {
                         item.options.add(new Option(97, 5));
                     }
-                    item.options.add(new Option(92, Util.nextInt(9, 11)));
+                    item.options.add(new Option(92, Util.nextInt(11, 11)));
                     break;
                 }
                 case 6: {
-                    item.options.add(new Option(83, Util.nextInt(350, 600)));
-                    item.options.add(new Option(82, Util.nextInt(350, 600)));
+                    item.options.add(new Option(83, Util.nextInt(600, 600)));
+                    item.options.add(new Option(82, Util.nextInt(600, 600)));
                     break;
                 }
                 case 7: {
                     if (item.sys == 1) {
                         item.options.add(new Option(96, 5));
-                    }
-                    else if (item.sys == 2) {
+                    } else if (item.sys == 2) {
                         item.options.add(new Option(95, 5));
-                    }
-                    else if (item.sys == 3) {
+                    } else if (item.sys == 3) {
                         item.options.add(new Option(97, 5));
                     }
-                    item.options.add(new Option(87 + item.sys, Util.nextInt(350, 600)));
+                    item.options.add(new Option(87 + item.sys, Util.nextInt(600, 600)));
                     break;
                 }
                 case 8: {
-                    item.options.add(new Option(82, Util.nextInt(350, 600)));
-                    item.options.add(new Option(84, Util.nextInt(90, 100)));
+                    item.options.add(new Option(82, Util.nextInt(600, 600)));
+                    item.options.add(new Option(84, Util.nextInt(100, 100)));
                     break;
                 }
                 case 9: {
-                    item.options.add(new Option(84, Util.nextInt(90, 100)));
-                    item.options.add(new Option(83, Util.nextInt(350, 600)));
+                    item.options.add(new Option(84, Util.nextInt(100, 100)));
+                    item.options.add(new Option(83, Util.nextInt(600, 600)));
                     break;
                 }
                 default: {
@@ -1442,7 +1532,7 @@ public class GameSrc {
                         p.conn.sendMessageLog("Không thể khảm cùng 1 loại ngọc trên 1 vật phẩm");
                         return;
                     }
-                    if(data.level > p.c.level) {
+                    if (data.level > p.c.level) {
                         p.conn.sendMessageLog("Level của bạn chưa đủ để khảm ngọc này");
                         return;
                     }
@@ -1835,7 +1925,7 @@ public class GameSrc {
                         return;
                     }
                     ItemTemplate dataItemLN = ItemTemplate.ItemTemplateId(itemLuyenNgoc.id);
-                    if(dataItemLN.level > p.c.level ) {
+                    if (dataItemLN.level > p.c.level) {
                         p.conn.sendMessageLog("Level của bạn chưa đủ để luyện ngọc này");
                         return;
                     }
@@ -1915,20 +2005,20 @@ public class GameSrc {
                                     if (Option.id != 106 || Option.id != 107 || Option.id != 108 || Option.id != 104 || Option.id != 123) {
                                         int value = itemLuyenNgoc.options.get(i).param;
                                         if (value > 0 && value < 50) {
-                                            value += Util.nextInt(value/4,value/3) ;
+                                            value += Util.nextInt(value / 4, value / 3);
                                         } else if (value >= 50 && value < 300) {
-                                            value += Util.nextInt(value/3,value/2) ;
+                                            value += Util.nextInt(value / 3, value / 2);
                                         } else if (value >= 300) {
-                                            value += Util.nextInt(value/2,value) ;
-                                        } else if(value >= -50 && value < 0) {
+                                            value += Util.nextInt(value / 2, value);
+                                        } else if (value >= -50 && value < 0) {
                                             value -= Util.nextInt(20);
-                                        } else if(value < -50) {
-                                            value -= Util.nextInt(50,100);
+                                        } else if (value < -50) {
+                                            value -= Util.nextInt(50, 100);
                                         }
                                         itemLuyenNgoc.options.get(i).param = value;
                                         m.writer().writeInt(value);
                                     } else if (Option.id == 123) {
-                                        int value = itemLuyenNgoc.options.get(i).param *2* chenhlech;
+                                        int value = itemLuyenNgoc.options.get(i).param * 2 * chenhlech;
                                         itemLuyenNgoc.options.get(i).param = value;
                                         m.writer().writeInt(value);
                                     } else {
@@ -1955,7 +2045,7 @@ public class GameSrc {
                 Item itemGotNgoc = p.c.getIndexBag(indexItemGotNgoc);
                 int expGotNgoc = 0;
                 ItemTemplate dataItemLN = ItemTemplate.ItemTemplateId(itemGotNgoc.id);
-                if(dataItemLN.level > p.c.level ) {
+                if (dataItemLN.level > p.c.level) {
                     p.conn.sendMessageLog("Level của bạn chưa đủ để gọt ngọc này");
                     return;
                 }
@@ -2009,17 +2099,16 @@ public class GameSrc {
                                 if (Option.id == 73 || Option.id == 105 || Option.id == 114 || Option.id == 115 || Option.id == 116 || Option.id == 117 || Option.id == 118 || Option.id == 120 || Option.id == 125 || Option.id == 126) {
                                     if (itemGotNgoc.options.get(i).param < -1) {
                                         int value = itemGotNgoc.options.get(i).param;
-                                        if(value > -20) {
-                                            value += Util.nextInt(1,10);
-                                        }
-                                        else if (value <= -20 && value > -100) {
-                                            value += Util.nextInt(10,20);
+                                        if (value > -20) {
+                                            value += Util.nextInt(1, 10);
+                                        } else if (value <= -20 && value > -100) {
+                                            value += Util.nextInt(10, 20);
                                         } else if (value <= -100 && value > -200) {
-                                            value += Util.nextInt(20,40);
+                                            value += Util.nextInt(20, 40);
                                         } else if (value <= -200) {
-                                            value += Util.nextInt(30,50);
+                                            value += Util.nextInt(30, 50);
                                         }
-                                        if(value >= 0) {
+                                        if (value >= 0) {
                                             value = -1;
                                         }
                                         itemGotNgoc.options.get(i).param = value;
@@ -2125,8 +2214,7 @@ public class GameSrc {
                 }
                 if (yenThaoNgoc <= p.c.yen) {
                     p.c.upyen(-yenThaoNgoc);
-                }
-                else if (yenThaoNgoc >= p.c.yen) {
+                } else if (yenThaoNgoc >= p.c.yen) {
                     int coin = yenThaoNgoc - p.c.yen;
                     if (coin > p.c.xu) {
                         p.conn.sendMessageLog("Không đủ xu và yên để tháo ngọc");
@@ -2499,7 +2587,7 @@ public class GameSrc {
                 m.writer().flush();
                 p.conn.sendMessage(m);
                 m.cleanup();
-                    p.conn.sendMessageLog("Tháo ngọc thành công");
+                p.conn.sendMessageLog("Tháo ngọc thành công");
                 break;
             }
             default: {
@@ -2567,9 +2655,9 @@ public class GameSrc {
                     byte ngocIndex = m.reader().readByte();
                     Item ngocItem = p.c.ItemBag[ngocIndex];
                     Item item = p.c.ItemBag[indexUI];
-                    if(item.ngocs != null) {
-                        for (Item itemN:item.ngocs) {
-                            if(itemN.id == ngocItem.id) {
+                    if (item.ngocs != null) {
+                        for (Item itemN : item.ngocs) {
+                            if (itemN.id == ngocItem.id) {
                                 p.conn.sendMessageLog("Trang bị đã được khảm loại ngọc này trước đó rồi.");
                                 return;
                             }
@@ -2581,8 +2669,8 @@ public class GameSrc {
                     }
                     p.endLoad(true);
                     yen = 0;
-                    for (Option op:ngocItem.options) {
-                        if(op.id == 123) {
+                    for (Option op : ngocItem.options) {
+                        if (op.id == 123) {
                             yen = op.param;
                             break;
                         }
@@ -2654,22 +2742,22 @@ public class GameSrc {
                     m.writer().flush();
                     p.conn.sendMessage(m);
                     m.cleanup();
-                    Service.requestItemInfoMessage(p,item, indexUI, 3);
+                    Service.requestItemInfoMessage(p, item, indexUI, 3);
                     break;
                 }
                 //Luyện
                 case 1: {
                     int exp = 0;
                     Item ngocItem = p.c.ItemBag[indexUI];
-                    if(ngocItem != null) {
+                    if (ngocItem != null) {
                         int i2 = -1;
-                        for(Option op : ngocItem.options) {
-                            if(op.id == 104) {
+                        for (Option op : ngocItem.options) {
+                            if (op.id == 104) {
                                 i2 = ngocItem.options.indexOf(op);
                                 break;
                             }
                         }
-                        if(i2 != -1) {
+                        if (i2 != -1) {
                             byte[] arrIndex = new byte[m.reader().available()];
                             byte index2;
                             Item item2;
@@ -2761,8 +2849,8 @@ public class GameSrc {
                         return;
                     }
                     p.c.upxuMessage((-(Integer) xuGotNgoc.get(Integer.valueOf(item.getUpgrade()))));
-                    for(Option option : item.options) {
-                        if(option != null && option.param < -1) {
+                    for (Option option : item.options) {
+                        if (option != null && option.param < -1) {
                             option.param += Util.nextInt(ItemTemplate.PARAMS.get(option.id) * 20 / 100, ItemTemplate.PARAMS.get(option.id) * 40 / 100);
                             if (option.param >= 0) {
                                 option.param = -1;
@@ -2809,8 +2897,8 @@ public class GameSrc {
                 }
                 case 3: {
                     Item item = p.c.ItemBag[indexUI];
-                    if(item != null) {
-                        if(p.c.getBagNull() < item.ngocs.size()) {
+                    if (item != null) {
+                        if (p.c.getBagNull() < item.ngocs.size()) {
                             p.conn.sendMessageLog(Language.NOT_ENOUGH_BAG);
                             return;
                         }
@@ -2818,7 +2906,7 @@ public class GameSrc {
                         Item itN;
                         while (item.ngocs.size() > 0) {
                             itN = item.ngocs.remove(0);
-                            if(itN != null) {
+                            if (itN != null) {
                                 itN.isLock = false;
                                 p.c.addItemBag(false, itN);
                             }
@@ -2832,11 +2920,10 @@ public class GameSrc {
                     break;
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -2845,12 +2932,11 @@ public class GameSrc {
     public static void upgradeNgoc(Item mainItem, int oldUpGrad, int nextUpgrade) {
         try {
             int j;
-            for(j = oldUpGrad; j < nextUpgrade; j++) {
-                for(Option op : mainItem.options) {
+            for (j = oldUpGrad; j < nextUpgrade; j++) {
+                for (Option op : mainItem.options) {
                     if (ItemTemplate.PARAMS.containsKey(op.id)) {
-                        op.param += op.param / Math.abs(op.param) * Util.nextInt((int)(0.6D * (double)ItemTemplate.PARAMS.get(op.id)), (int)(0.9D * (double)ItemTemplate.PARAMS.get(op.id)));
-                    }
-                    else if(op.id == 123) {
+                        op.param += op.param / Math.abs(op.param) * Util.nextInt((int) (0.6D * (double) ItemTemplate.PARAMS.get(op.id)), (int) (0.9D * (double) ItemTemplate.PARAMS.get(op.id)));
+                    } else if (op.id == 123) {
                         op.param += 400000;
                     }
                 }
@@ -2887,75 +2973,75 @@ public class GameSrc {
         p.c.isTaskDanhVong = 0;
         p.c.countTaskDanhVong++;
         p.c.taskDanhVong = new int[]{-1, -1, -1, 0, p.c.countTaskDanhVong};
-        Service.chatNPC(p, (short)2, "Con đã huỷ nhiệm vụ lần này.");
+        Service.chatNPC(p, (short) 2, "Con đã huỷ nhiệm vụ lần này.");
     }
 
-    private static void handleUpgradeMat(Player p, Item item,int type) {
+    private static void handleUpgradeMat(Player p, Item item, int type) {
         try {
             int upPer = GameSrc.percentUpMat[item.upgrade];
-            if(type == 1) {
+            if (type == 1) {
                 upPer *= 2;
             }
-            if(Util.nextInt(110) < upPer) {
-                p.c.removeItemBody((byte)14);
-                Item itemup = ItemTemplate.itemDefault(685+item.upgrade, true);
+            if (Util.nextInt(110) < upPer) {
+                p.c.removeItemBody((byte) 14);
+                Item itemup = ItemTemplate.itemDefault(685 + item.upgrade, true);
                 itemup.quantity = 1;
-                itemup.upgrade = (byte)(item.upgrade+1);
+                itemup.upgrade = (byte) (item.upgrade + 1);
                 itemup.isLock = true;
 
-                Option op = new Option(6, 1000*itemup.upgrade);
+                Option op = new Option(6, 1000 * itemup.upgrade);
                 itemup.options.add(op);
-                op = new Option(87, 500+(250*item.upgrade));
+                op = new Option(87, 500 + (250 * item.upgrade));
                 itemup.options.add(op);
 
-                if(itemup.upgrade >= 3) {
+                if (itemup.upgrade >= 3) {
                     op = new Option(79, 25);
                     itemup.options.add(op);
                 }
-                if(itemup.upgrade >= 6) {
+                if (itemup.upgrade >= 6) {
                     op = new Option(64, 0);
                     itemup.options.add(op);
                 }
-                if(itemup.upgrade == 10) {
+                if (itemup.upgrade == 10) {
                     op = new Option(113, 5000);
                     itemup.options.add(op);
                 }
-                p.c.addItemBag( false, itemup);
+                p.c.addItemBag(false, itemup);
             } else {
                 p.sendAddchatYellow("Nâng cấp mắt thất bại!");
             }
 
-            if(p.c.yen < GameSrc.coinUpMat[item.upgrade]) {
+            if (p.c.yen < GameSrc.coinUpMat[item.upgrade]) {
                 p.c.xu -= (GameSrc.coinUpMat[item.upgrade] - p.c.yen);
                 p.c.yen = 0;
             } else {
                 p.c.yen -= GameSrc.coinUpMat[item.upgrade];
             }
-            if(type == 1) {
+            if (type == 1) {
                 p.luong -= GameSrc.goldUpMat[item.upgrade];
             }
-            p.c.removeItemBags(694+item.upgrade, 10);
+            p.c.removeItemBags(694 + item.upgrade, 10);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void NangMat(Player p, Item item, int type) throws IOException {
-        if(item.upgrade >= 10) {
+        if (item.upgrade >= 10) {
             p.conn.sendMessageLog("Mắt đã nâng cấp tối đa");
             return;
         }
-        if(p.c.quantityItemyTotal(694+item.upgrade) < 10) {
-            ItemTemplate data = ItemTemplate.ItemTemplateId(694+item.upgrade);
-            p.conn.sendMessageLog("Bạn không đủ 10 viên "+data.name+" để nâng cấp");
+        if (p.c.quantityItemyTotal(694 + item.upgrade) < 10) {
+            ItemTemplate data = ItemTemplate.ItemTemplateId(694 + item.upgrade);
+            p.conn.sendMessageLog("Bạn không đủ 10 viên " + data.name + " để nâng cấp");
             return;
         }
-        if((p.c.yen + p.c.xu) < GameSrc.coinUpMat[item.upgrade]) {
+        if ((p.c.yen + p.c.xu) < GameSrc.coinUpMat[item.upgrade]) {
             p.conn.sendMessageLog("Bạn không đủ yên và xu để nâng cấp mắt");
             return;
         }
-        if(type == 1 && p.luong < GameSrc.goldUpMat[item.upgrade]) {
+        if (type == 1 && p.luong < GameSrc.goldUpMat[item.upgrade]) {
             p.conn.sendMessageLog("Bạn không đủ lượng để nâng cấp mắt");
             return;
         }
@@ -2988,26 +3074,27 @@ public class GameSrc {
         } catch (Exception var6) {
             var6.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
     }
 
     static {
-        crystals = new int[] { 1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 3096576 };
-        upClothe = new int[] { 4, 9, 33, 132, 177, 256, 656, 2880, 3968, 6016, 13440, 54144, 71680, 108544, 225280, 1032192 };
-        upAdorn = new int[] { 6, 14, 50, 256, 320, 512, 1024, 5120, 6016, 9088, 19904, 86016, 108544, 166912, 360448, 1589248 };
-        upWeapon = new int[] { 18, 42, 132, 627, 864, 1360, 2816, 13824, 17792, 26880, 54016, 267264, 315392, 489472, 1032192, 4587520 };
-        coinUpCrystals = new int[] { 10, 40, 160, 640, 2560, 10240, 40960, 163840, 655360, 1310720, 3932160, 11796480 };
-        coinUpClothes = new int[] { 120, 270, 990, 3960, 5310, 7680, 19680, 86400, 119040, 180480, 403200, 1624320, 2150400, 3256320, 6758400, 10137600 };
-        coinUpAdorns = new int[] { 180, 420, 1500, 7680, 9600, 15360, 30720, 153600, 180480, 272640, 597120, 2580480, 3256320, 5007360, 10813440, 16220160 };
-        coinUpWeapons = new int[] { 540, 1260, 3960, 18810, 25920, 40800, 84480, 414720, 533760, 806400, 1620480, 8017920, 9461760, 14684160, 22026240, 33039360 };
-        goldUps = new int[] { 1, 2, 3, 4, 5, 10, 15, 20, 50, 100, 150, 200, 300, 400, 500, 600 };
-        maxPercents = new int[] { 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5 };
-        ArridLuck = new short[] {280, 742,268,242,-1,242,242,-2,-3,-4,409,409,-1,-1,-1,-1,-1,-1,-1,409,409,409,410,-1,410,410,410,-1,-1,-1,-1,-1,-1,-1,410,567,567,567,283,-2,-3,-4,283,283,283,-1, 4,4,4,-1,4,4,4,-2,-3,-4,4,4,4,5, 5,-1,-1,-1,-1,-1,-1,-1, 5, 5, 5, 5,5,5,5,-1,5,6, 6, 6,-1,-1,-1,-1,-1,-1, 6, 6, 6,6,-1,-1,-1,6,6,6,6,-1,6,6,6,-1,-1,-1,-1,-1,-1, 7, 7, 7,-1,-1, 7, 7, 7,7,7,-1,-1,-1, 8,8,8,8,9,9,-1,-1,-1, 567, 317, 318,-1,-1,-1,-1,-1,-1, 319, 320, 321, 322, 323, 324, 325,-1,-1,-1,-1,-1,-1,-1, 326, 327, 328, 329,-2,-3,-4,-1,-1,-1, 330, 331, 332,-1,-1, 333, 334, 335, 336,-1,-1,-1,-1,-1,-1,-1,-1, 369, 370, 371, 372, 373, 374, 419,436,436,436,436,-1,-1,-1,-1,-1,-1,-1,-1,437,437,438, 443, 523, 523, 485,-1,-1,-1,-1,-1,-1,-1,-1, 492, 493, 494,-1, 495, 496, 497, 498, 499,-1,-1,-1,-1,-1,-1,-1, 500, 501, 502, 503, 504, 505, 506, 507, 508,-1,-1,-1,-1,-1,-1, 509, 510, 742 };
+        crystals = new int[]{1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 3096576};
+        upClothe = new int[]{4, 9, 33, 132, 177, 256, 656, 2880, 3968, 6016, 13440, 54144, 71680, 108544, 225280, 1032192};
+        upAdorn = new int[]{6, 14, 50, 256, 320, 512, 1024, 5120, 6016, 9088, 19904, 86016, 108544, 166912, 360448, 1589248};
+        upWeapon = new int[]{18, 42, 132, 627, 864, 1360, 2816, 13824, 17792, 26880, 54016, 267264, 315392, 489472, 1032192, 4587520};
+        coinUpCrystals = new int[]{10, 40, 160, 640, 2560, 10240, 40960, 163840, 655360, 1310720, 3932160, 11796480};
+        coinUpClothes = new int[]{120, 270, 990, 3960, 5310, 7680, 19680, 86400, 119040, 180480, 403200, 1624320, 2150400, 3256320, 6758400, 10137600};
+        coinUpAdorns = new int[]{180, 420, 1500, 7680, 9600, 15360, 30720, 153600, 180480, 272640, 597120, 2580480, 3256320, 5007360, 10813440, 16220160};
+        coinUpWeapons = new int[]{540, 1260, 3960, 18810, 25920, 40800, 84480, 414720, 533760, 806400, 1620480, 8017920, 9461760, 14684160, 22026240, 33039360};
+        goldUps = new int[]{1, 2, 3, 4, 5, 10, 15, 20, 50, 100, 150, 200, 300, 400, 500, 600};
+        maxPercents = new int[]{80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5};
+//        ArridLuck = new short[] {280, 742,268,242,-1,242,242,-2,-3,-4,409,409,-1,-1,-1,-1,-1,-1,-1,409,409,409,410,-1,410,410,410,-1,-1,-1,-1,-1,-1,-1,410,567,567,567,283,-2,-3,-4,283,283,283,-1, 4,4,4,-1,4,4,4,-2,-3,-4,4,4,4,5, 5,-1,-1,-1,-1,-1,-1,-1, 5, 5, 5, 5,5,5,5,-1,5,6, 6, 6,-1,-1,-1,-1,-1,-1, 6, 6, 6,6,-1,-1,-1,6,6,6,6,-1,6,6,6,-1,-1,-1,-1,-1,-1, 7, 7, 7,-1,-1, 7, 7, 7,7,7,-1,-1,-1, 8,8,8,8,9,9,-1,-1,-1, 567, 317, 318,-1,-1,-1,-1,-1,-1, 319, 320, 321, 322, 323, 324, 325,-1,-1,-1,-1,-1,-1,-1, 326, 327, 328, 329,-2,-3,-4,-1,-1,-1, 330, 331, 332,-1,-1, 333, 334, 335, 336,-1,-1,-1,-1,-1,-1,-1,-1, 369, 370, 371, 372, 373, 374, 419,436,436,436,436,-1,-1,-1,-1,-1,-1,-1,-1,437,437,438, 443, 523, 523, 485,-1,-1,-1,-1,-1,-1,-1,-1, 492, 493, 494,-1, 495, 496, 497, 498, 499,-1,-1,-1,-1,-1,-1,-1, 500, 501, 502, 503, 504, 505, 506, 507, 508,-1,-1,-1,-1,-1,-1, 509, 510, 742 };
+        ArridLuck = new short[]{-1, -1, -1, -1, -1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 283, 409, 410, 436, 437, 438, 443, 524, 567, 742};
         //ArryenLuck = new int[] { 10000, 20000, 30000, 50000, 100000, 200000, 500000, 1000000, 5000000 };
-        ArrdayLuck = new byte[] { 3, 7, 15 };
+        ArrdayLuck = new byte[]{3, 7, 15};
         xuGotNgoc.put(1, 5000);
         xuGotNgoc.put(2, 40000);
         xuGotNgoc.put(3, 135000);
