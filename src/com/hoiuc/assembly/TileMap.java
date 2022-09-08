@@ -3389,10 +3389,11 @@ public class TileMap {
                                 p.sendAddchatYellow("Vật phẩm của người khác.");
                                 return;
                             }
-                            if (Math.abs(itemmap.x - p.c.get().x) > 50 || Math.abs(itemmap.y - p.c.get().y) > 30) {
-                                p.sendAddchatYellow("Khoảng cách quá xa.");
-                                return;
-                            }
+                            //Cho phep nhat xa
+//                            if (Math.abs(itemmap.x - p.c.get().x) > 50 || Math.abs(itemmap.y - p.c.get().y) > 30) {
+//                                p.sendAddchatYellow("Khoảng cách quá xa.");
+//                                return;
+//                            }
                             if (data.type == 21 || data.type == 19 || p.c.getBagNull() > 0 || (p.c.getIndexBagid(item.id, item.isLock) != -1 && data.isUpToUp)) {
                                 if(this.itemMap.contains(itemmap)) {
                                     this.itemMap.remove(itemmap);
@@ -3411,19 +3412,19 @@ public class TileMap {
                                     int yenup = 0;
                                     switch (itemmap.checkMob) {
                                         case 0: {
-                                            yenup = 500000;
+                                            yenup = 20000;
                                             break;
                                         }
                                         case 1: {
-                                            yenup = 1000000;
+                                            yenup = 40000;
                                             break;
                                         }
                                         case 2: {
-                                            yenup = 3000000;
+                                            yenup = 80000;
                                             break;
                                         }
                                         case 4: {
-                                            yenup = 10000000;
+                                            yenup = 160000;
                                             break;
                                         }
                                     }
