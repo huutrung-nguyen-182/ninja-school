@@ -567,7 +567,7 @@ public class GameSrc {
                     p.conn.sendMessageLog("Vậy phẩm chuyển hoá không hợp lệ");
                     return;
                 }
-                if (data1.level > data2.level || data1.type != data2.type) {
+                if (data1.type != data2.type) {
                     p.conn.sendMessageLog("Chỉ có thể chuyển hoá trang bị cùng cấp và cùng loại trở lên");
                     return;
                 }
@@ -822,20 +822,23 @@ public class GameSrc {
                 p.c.upyen(-p.c.yen);
                 p.c.upxu(-coin);
             }
-            boolean suc = false;
-            if (item.upgrade <= 8) {
-                suc = Util.nextInt(1, 100) <= percen;
-            } else {
-                suc = Util.nextInt(1, 150) <= percen;
-            }
+//            boolean suc = false;
+//            if (item.upgrade <= 8) {
+//                suc = Util.nextInt(1, 100) <= percen;
+//            } else {
+//                suc = Util.nextInt(1, 150) <= percen;
+//            }
+//
+//            item.isLock = true;
+//            Util.Debug("type " + type + " index " + index + " percen " + percen);
+//            if (suc) {
+//                item.upgradeNext((byte) 1);
+//            } else if (!keep) {
+//                item.upgradeNext((byte) (-(item.upgrade - KeepUpgrade(item.upgrade))));
+//            }
+            boolean suc = true;
+            item.upgradeNext((byte) 1);
 
-            item.isLock = true;
-            Util.Debug("type " + type + " index " + index + " percen " + percen);
-            if (suc) {
-                item.upgradeNext((byte) 1);
-            } else if (!keep) {
-                item.upgradeNext((byte) (-(item.upgrade - KeepUpgrade(item.upgrade))));
-            }
             m = new Message(21);
             m.writer().writeByte(suc ? 1 : 0);
             m.writer().writeInt(p.luong);
@@ -1168,6 +1171,9 @@ public class GameSrc {
             for (i = 0; i < 9; ++i) {
                 if (i == index) {
                     m.writer().writeShort(id);
+                    if (id == 331)  {
+                        Util.Debug("Lat hinh vu khi kiem 6x");
+                    }
                 } else {
                     m.writer().writeShort(GameSrc.ArridLuck[Util.nextInt(GameSrc.ArridLuck.length)]);
                 }
@@ -3092,7 +3098,8 @@ public class GameSrc {
         goldUps = new int[]{1, 2, 3, 4, 5, 10, 15, 20, 50, 100, 150, 200, 300, 400, 500, 600};
         maxPercents = new int[]{80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5};
 //        ArridLuck = new short[] {280, 742,268,242,-1,242,242,-2,-3,-4,409,409,-1,-1,-1,-1,-1,-1,-1,409,409,409,410,-1,410,410,410,-1,-1,-1,-1,-1,-1,-1,410,567,567,567,283,-2,-3,-4,283,283,283,-1, 4,4,4,-1,4,4,4,-2,-3,-4,4,4,4,5, 5,-1,-1,-1,-1,-1,-1,-1, 5, 5, 5, 5,5,5,5,-1,5,6, 6, 6,-1,-1,-1,-1,-1,-1, 6, 6, 6,6,-1,-1,-1,6,6,6,6,-1,6,6,6,-1,-1,-1,-1,-1,-1, 7, 7, 7,-1,-1, 7, 7, 7,7,7,-1,-1,-1, 8,8,8,8,9,9,-1,-1,-1, 567, 317, 318,-1,-1,-1,-1,-1,-1, 319, 320, 321, 322, 323, 324, 325,-1,-1,-1,-1,-1,-1,-1, 326, 327, 328, 329,-2,-3,-4,-1,-1,-1, 330, 331, 332,-1,-1, 333, 334, 335, 336,-1,-1,-1,-1,-1,-1,-1,-1, 369, 370, 371, 372, 373, 374, 419,436,436,436,436,-1,-1,-1,-1,-1,-1,-1,-1,437,437,438, 443, 523, 523, 485,-1,-1,-1,-1,-1,-1,-1,-1, 492, 493, 494,-1, 495, 496, 497, 498, 499,-1,-1,-1,-1,-1,-1,-1, 500, 501, 502, 503, 504, 505, 506, 507, 508,-1,-1,-1,-1,-1,-1, 509, 510, 742 };
-        ArridLuck = new short[]{-1, -1, -1, -1, -1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 283, 409, 410, 436, 437, 438, 443, 524, 567, 742};
+//        ArridLuck = new short[]{-1, -1, -1, -1, -1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 283, 409, 410, 436, 437, 438, 443, 524, 567, 742};
+        ArridLuck = new short[]{-2, -2, -2, -2, -2, -2, -2, -2, -2, -2};
         //ArryenLuck = new int[] { 10000, 20000, 30000, 50000, 100000, 200000, 500000, 1000000, 5000000 };
         ArrdayLuck = new byte[]{3, 7, 15};
         xuGotNgoc.put(1, 5000);

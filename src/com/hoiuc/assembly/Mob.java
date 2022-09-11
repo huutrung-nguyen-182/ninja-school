@@ -347,7 +347,7 @@ public class Mob {
                 }
                 switch (Util.nextInt(1, 2)) {
                     case 1: {
-                        if(this.lvboss == 0 && Util.nextInt(10) < 1) {
+                        if(this.lvboss == 0 && Util.nextInt(5) < 1) {
                             ItemLeave.leaveYen(this.tileMap, this, master);
                         }
                         break;
@@ -365,9 +365,6 @@ public class Mob {
                 ItemLeave.randomLeave(this.tileMap, this, master, Util.nextInt(1, 2), 0);
             } else if (this.tileMap.map.LangCo()) {
                 ItemLeave.randomLeave(this.tileMap, this, master, Util.nextInt(1, 3), 1);
-                if(this.lvboss == 2) {
-                    ItemLeave.leaveTTTT(this.tileMap, this, master);
-                }
             }
 
             if (this.isboss) {

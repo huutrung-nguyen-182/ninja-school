@@ -339,7 +339,6 @@ public class Session {
                     if (Session.this.connected && Session.this.dis != null) {
                         message = this.readMessage();
                         if (message != null && Session.this != null) {
-                            Util.Debug("Session: " + Session.this.id + " do message " + message.getCommand() + " size " + message.reader().available());
                             Session.this.messageHandler.processMessage(Session.this, message);
                             message.cleanup();
                             continue;

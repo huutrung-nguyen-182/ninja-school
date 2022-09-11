@@ -16,14 +16,14 @@ import java.util.List;
 
 public class Menu {
     public void sendMessMenuNhiemVu(Player p, byte npcid, byte menuId, String str) throws IOException {
-        NpcTemplate npc = (NpcTemplate)Manager.npcs.get(npcid);
+        NpcTemplate npc = (NpcTemplate) Manager.npcs.get(npcid);
         Message mss = new Message(39);
         DataOutputStream ds = mss.writer();
         ds.writeShort(npcid);
         ds.writeUTF(str);
         ds.writeByte(npc.menu[menuId].length);
 
-        for(int i = 1; i < npc.menu[menuId].length; ++i) {
+        for (int i = 1; i < npc.menu[menuId].length; ++i) {
             ds.writeUTF(npc.menu[menuId][i]);
         }
 
@@ -36,7 +36,7 @@ public class Menu {
         Message m = null;
         try {
             m = new Message(63);
-            for(byte i = 0; i < menu.length; ++i) {
+            for (byte i = 0; i < menu.length; ++i) {
                 m.writer().writeUTF(menu[i]);
             }
             m.writer().flush();
@@ -44,7 +44,7 @@ public class Menu {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -63,7 +63,7 @@ public class Menu {
         } catch (IOException var5) {
             var5.printStackTrace();
         } finally {
-            if(m != null) {
+            if (m != null) {
                 m.cleanup();
             }
         }
@@ -77,7 +77,7 @@ public class Menu {
             p.c.typemenu = 0;
             p.typemenu = npcId;
             if (npcId == 33) {
-                switch(Server.manager.event) {
+                switch (Server.manager.event) {
                     case 1: {
                         Menu.doMenuArray(p, new String[]{"Diều giấy", "Diều vải"});
                         break;
@@ -87,15 +87,14 @@ public class Menu {
                         break;
                     }
                     case 3: {
-                        Menu.doMenuArray(p, new String[]{"Bánh Chocolate", "Bánh dâu tây", "Đổi mặt nạ", "Đổi pet","BXH Diệt Boss TL", "Hướng dẫn"});
+                        Menu.doMenuArray(p, new String[]{"Bánh Chocolate", "Bánh dâu tây", "Đổi mặt nạ", "Đổi pet", "BXH Diệt Boss TL", "Hướng dẫn"});
                         break;
                     }
                     default: {
                         break;
                     }
                 }
-            }
-            else if(npcId == 40) {
+            } else if (npcId == 40) {
                 switch (p.c.mapid) {
                     case 117: {
                         Menu.doMenuArray(p, new String[]{"Rời khỏi nơi này", "Đặt cược", "Hướng dẫn"});
@@ -109,14 +108,14 @@ public class Menu {
                 }
             }
 
-             ms = new Message((byte)40);
+            ms = new Message((byte) 40);
             ms.writer().flush();
             p.conn.sendMessage(ms);
             ms.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(ms != null) {
+            if (ms != null) {
                 ms.cleanup();
             }
         }
@@ -132,7 +131,7 @@ public class Menu {
             }
             ms.cleanup();
             if ((p.typemenu == -1 || p.typemenu == 0) && p.typemenu != npcId) {
-                switch(npcId) {
+                switch (npcId) {
                     case 0:
                         Menu.npcKanata(p, npcId, menuId, b3);
                         break;
@@ -264,7 +263,7 @@ public class Menu {
                         break;
                     case 120: {
                         if (menuId > 0 && menuId < 7) {
-                            Admission.Admission(p,menuId);
+                            Admission.Admission(p, menuId);
                         }
                     }
                     default: {
@@ -272,9 +271,8 @@ public class Menu {
                         break;
                     }
                 }
-            }
-            else if (p.typemenu == npcId) {
-                switch(p.typemenu) {
+            } else if (p.typemenu == npcId) {
+                switch (p.typemenu) {
                     case 0:
                         Menu.npcKanata(p, npcId, menuId, b3);
                         break;
@@ -408,7 +406,7 @@ public class Menu {
                         break;
                     case 120: {
                         if (menuId > 0 && menuId < 7) {
-                            Admission.Admission(p,(byte)menuId);
+                            Admission.Admission(p, (byte) menuId);
                         }
                     }
                     default: {
@@ -416,9 +414,8 @@ public class Menu {
                         break;
                     }
                 }
-            }
-            else {
-                switch(p.typemenu) {
+            } else {
+                switch (p.typemenu) {
                     case -125: {
                         Menu.doiGiayVun(p, npcId, menuId, b3);
                         break;
@@ -449,7 +446,7 @@ public class Menu {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(ms != null) {
+            if (ms != null) {
                 ms.cleanup();
             }
         }
@@ -458,7 +455,7 @@ public class Menu {
     public static void menuAdmin(Player p, byte npcid, byte menuId, byte b3) {
         Player player;
         int i;
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 Service.sendInputDialog(p, (short) 9998, "Nhập số phút muốn bảo trì 0->10 (0: ngay lập tức)");
                 break;
@@ -566,8 +563,8 @@ public class Menu {
                 try {
                     String a = "";
                     int i2 = 1;
-                    for (CheckRHB check: CheckRHB.checkRHBArrayList) {
-                        a += i2 + ". " + check.name + " - " + check.item + " - " + check.time +".\n";
+                    for (CheckRHB check : CheckRHB.checkRHBArrayList) {
+                        a += i2 + ". " + check.name + " - " + check.item + " - " + check.time + ".\n";
                         i2++;
                     }
                     Server.manager.sendTB(p, "Check RHB", a);
@@ -577,19 +574,19 @@ public class Menu {
                 break;
             }
             case 17: {
-               try {
-                   ResultSet red = SQLManager.stat.executeQuery("SELECT * FROM `alert` WHERE `id` = 1;");
-                   if (red != null && red.first()) {
-                       String alert = red.getString("content");
-                       Manager.alert.setAlert(alert);
-                       red.close();
-                   }
-                   p.sendAddchatYellow("Cập nhật thông báo thành công");
-                   Manager.alert.sendAlert(p);
-               } catch (Exception e) {
-                   p.conn.sendMessageLog("Lỗi cập nhật!");
-               }
-               break;
+                try {
+                    ResultSet red = SQLManager.stat.executeQuery("SELECT * FROM `alert` WHERE `id` = 1;");
+                    if (red != null && red.first()) {
+                        String alert = red.getString("content");
+                        Manager.alert.setAlert(alert);
+                        red.close();
+                    }
+                    p.sendAddchatYellow("Cập nhật thông báo thành công");
+                    Manager.alert.sendAlert(p);
+                } catch (Exception e) {
+                    p.conn.sendMessageLog("Lỗi cập nhật!");
+                }
+                break;
             }
             case 18: {
                 try {
@@ -612,7 +609,7 @@ public class Menu {
     }
 
     public static void doiGiayVun(Player p, byte npcid, byte menuId, byte b3) {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 p.c.removeItemBag(p.c.getIndexBagid(251, false), 250);
                 p.c.addItemBag(false, ItemTemplate.itemDefault(252, false));
@@ -628,7 +625,7 @@ public class Menu {
     }
 
     public static void npcKanata(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 p.requestItem(2);
                 break;
@@ -659,7 +656,7 @@ public class Menu {
                             if (LanhDiaGiaToc.ldgts.containsKey(p.c.ldgtID)) {
                                 lanhDiaGiaToc = LanhDiaGiaToc.ldgts.get(p.c.ldgtID);
                                 if (lanhDiaGiaToc != null && lanhDiaGiaToc.map[0] != null && lanhDiaGiaToc.map[0].area[0] != null) {
-                                    if(lanhDiaGiaToc.ninjas.size() <= 24) {
+                                    if (lanhDiaGiaToc.ninjas.size() <= 24) {
                                         p.c.mapKanata = p.c.mapid;
                                         p.c.tileMap.leave(p);
                                         lanhDiaGiaToc.map[0].area[0].EnterMap0(p.c);
@@ -670,22 +667,22 @@ public class Menu {
                                 }
                             }
                         }
-                        if(lanhDiaGiaToc == null){
-                            if(p.c.clan.typeclan < 3) {
+                        if (lanhDiaGiaToc == null) {
+                            if (p.c.clan.typeclan < 3) {
                                 Service.chatNPC(p, (short) npcid, "Con không phải tộc trưởng hoặc tộc phó, không thể mở Lãnh địa gia tộc.");
                                 return;
                             }
-                            if(p.c.getBagNull() < 1) {
+                            if (p.c.getBagNull() < 1) {
                                 Service.chatNPC(p, (short) npcid, "Hành trang của con không đủ chỗ trống để nhận Chìa khoá LDGT");
                                 return;
                             }
                             ClanManager clan = ClanManager.getClanName(p.c.clan.clanName);
                             if (clan != null && p.c.clan.typeclan >= 3) {
-                                if(clan.openDun <= 0) {
+                                if (clan.openDun <= 0) {
                                     Service.chatNPC(p, (short) npcid, "Số lần vào LDGT tuần này đã hết.");
                                     return;
                                 }
-                                if(clan.ldgtID != -1) {
+                                if (clan.ldgtID != -1) {
                                     Service.chatNPC(p, (short) npcid, "Lãnh địa gia tộc của con đang được mở rồi.");
                                     return;
                                 }
@@ -698,7 +695,7 @@ public class Menu {
                                 itemup.expires = System.currentTimeMillis() + 600000L;
                                 itemup.isExpires = true;
                                 itemup.isLock = true;
-                                if(p.c.quantityItemyTotal(260) > 0) {
+                                if (p.c.quantityItemyTotal(260) > 0) {
                                     p.c.removeItemBags(260, p.c.quantityItemyTotal(260));
                                 }
                                 p.c.addItemBag(false, itemup);
@@ -719,11 +716,11 @@ public class Menu {
                             p.conn.sendMessageLog("Chức năng này không dành cho phân thân");
                             return;
                         }
-                        if(p.c.quantityItemyTotal(262) < 500) {
+                        if (p.c.quantityItemyTotal(262) < 500) {
                             Service.chatNPC(p, (short) npcid, "Con cần có 500 Đồng tiền gia tộc để đổi lấy Túi quà gia tộc.");
                             return;
                         }
-                        if(p.c.getBagNull() < 1) {
+                        if (p.c.getBagNull() < 1) {
                             Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
@@ -931,11 +928,11 @@ public class Menu {
                         p.c.pointCave = 0;
 
                         if (p.c.party != null && p.c.party.charID == p.c.id) {
-                            if(p.c.party.aChar != null && p.c.party.aChar.size() > 0) {
+                            if (p.c.party.aChar != null && p.c.party.aChar.size() > 0) {
                                 synchronized (p.c.party.aChar) {
                                     Char _char;
                                     for (int i = 0; i < p.c.party.aChar.size(); i++) {
-                                        if(p.c.party.aChar.get(i) != null) {
+                                        if (p.c.party.aChar.get(i) != null) {
                                             _char = p.c.party.aChar.get(i);
                                             if (_char.id != p.c.id && p.c.tileMap.getNinja(_char.id) != null && _char.nCave > 0 && _char.caveID == -1 && _char.level >= 30 && (int) _char.level / 10 == cave.x) {
                                                 _char.nCave--;
@@ -1019,9 +1016,9 @@ public class Menu {
     }
 
     public static void npcFuroya(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                switch(b3) {
+                switch (b3) {
                     case 0:
                         p.requestItem(21 - p.c.gender);
                         return;
@@ -1038,11 +1035,11 @@ public class Menu {
                         p.requestItem(29 - p.c.gender);
                         return;
                     default:
-                        Service.chatNPC(p, (short)npcid, "Chức năng này đang cập nhật!");
+                        Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                         return;
                 }
             case 1:
-                Service.chatNPC(p, (short)npcid, "Tan bán quần áo, mũ nón, găng tay và giày siêu bền, siêu rẻ!");
+                Service.chatNPC(p, (short) npcid, "Tan bán quần áo, mũ nón, găng tay và giày siêu bền, siêu rẻ!");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -1053,7 +1050,7 @@ public class Menu {
     }
 
     public static void npcAmeji(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 switch (b3) {
                     case 0: {
@@ -1109,11 +1106,7 @@ public class Menu {
                         p.c.isTaskDanhVong = 1;
                         p.c.countTaskDanhVong--;
                         if (p.c.isTaskDanhVong == 1) {
-                            String nv = "NHIỆM VỤ LẦN NÀY: \n" +
-                                    String.format(DanhVongTemplate.nameNV[p.c.taskDanhVong[0]],
-                                            p.c.taskDanhVong[1],
-                                            p.c.taskDanhVong[2])
-                                    + "\n\n- Số lần nhận nhiệm vụ còn lại là: " + p.c.countTaskDanhVong;
+                            String nv = "NHIỆM VỤ LẦN NÀY: \n" + String.format(DanhVongTemplate.nameNV[p.c.taskDanhVong[0]], p.c.taskDanhVong[1], p.c.taskDanhVong[2]) + "\n\n- Số lần nhận nhiệm vụ còn lại là: " + p.c.countTaskDanhVong;
                             Server.manager.sendTB(p, "Nhiệm vụ", nv);
                         }
                         break;
@@ -1166,19 +1159,19 @@ public class Menu {
                         }
                         p.c.plusPointDanhVong(type, point);
 
-                        if(p.c.countTaskDanhVong % 2 == 0) {
+                        if (p.c.countTaskDanhVong % 2 == 0) {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 739 : 766, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(1,2);
+                            itemUp.quantity = Util.nextInt(1, 2);
                             p.c.addItemBag(true, itemUp);
                         } else {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 740 : 767, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(1,2);
+                            itemUp.quantity = Util.nextInt(1, 2);
                             p.c.addItemBag(true, itemUp);
                         }
 
@@ -1313,7 +1306,7 @@ public class Menu {
     }
 
     public static void npcKiriko(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 if (p.c.isNhanban) {
                     Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
@@ -1341,17 +1334,17 @@ public class Menu {
     }
 
     public static void npcTabemono(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
                 if (p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                    Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
                 p.requestItem(9);
                 break;
             case 1:
                 if (p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                    Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
 
@@ -1449,73 +1442,73 @@ public class Menu {
                     case 4: {
                         ResultSet res = null;
                         try {
-                            if(p.c.rankTDB > 0) {
-                                if(p.c.isGiftTDB == 1) {
-                                    if(p.c.rankTDB > 20) {
+                            if (p.c.rankTDB > 0) {
+                                if (p.c.isGiftTDB == 1) {
+                                    if (p.c.rankTDB > 20) {
                                         p.upluongMessage(500);
                                         p.c.upxuMessage(500000);
                                     } else {
                                         switch (p.c.rankTDB) {
                                             case 1: {
-                                                if(p.c.getBagNull() < 10) {
+                                                if (p.c.getBagNull() < 10) {
                                                     Service.chatNPC(p, (short) npcid, "Con cần ít nhất 10 chỗ trống trong hành trang để nhận thưởng.");
                                                     return;
                                                 }
-                                                Item pl = ItemTemplate.itemDefault(308,false);
+                                                Item pl = ItemTemplate.itemDefault(308, false);
                                                 pl.quantity = 2;
-                                                p.c.addItemBag(true,pl);
+                                                p.c.addItemBag(true, pl);
 
-                                                pl = ItemTemplate.itemDefault(309,false);
+                                                pl = ItemTemplate.itemDefault(309, false);
                                                 pl.quantity = 2;
-                                                p.c.addItemBag(true,pl);
+                                                p.c.addItemBag(true, pl);
 
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(540,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(540,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(540, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(540, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
 
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(384,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(384, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
 
                                                 p.upluongMessage(20000);
                                                 p.c.upxuMessage(20000000);
                                                 break;
                                             }
                                             case 2: {
-                                                if(p.c.getBagNull() < 7) {
+                                                if (p.c.getBagNull() < 7) {
                                                     Service.chatNPC(p, (short) npcid, "Con cần ít nhất 7 chỗ trống trong hành trang để nhận thưởng.");
                                                     return;
                                                 }
-                                                Item pl = ItemTemplate.itemDefault(308,false);
+                                                Item pl = ItemTemplate.itemDefault(308, false);
                                                 pl.quantity = 1;
-                                                p.c.addItemBag(true,pl);
+                                                p.c.addItemBag(true, pl);
 
-                                                pl = ItemTemplate.itemDefault(309,false);
+                                                pl = ItemTemplate.itemDefault(309, false);
                                                 pl.quantity = 1;
-                                                p.c.addItemBag(true,pl);
+                                                p.c.addItemBag(true, pl);
 
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(540,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(540, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
 
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(384,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(384, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
 
                                                 p.upluongMessage(10000);
                                                 p.c.upxuMessage(10000000);
                                                 break;
                                             }
                                             case 3: {
-                                                if(p.c.getBagNull() < 4) {
+                                                if (p.c.getBagNull() < 4) {
                                                     Service.chatNPC(p, (short) npcid, "Con cần ít nhất 4 chỗ trống trong hành trang để nhận thưởng.");
                                                     return;
                                                 }
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(540,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(540, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
                                                 p.upluongMessage(5000);
                                                 p.c.upxuMessage(5000000);
                                                 break;
@@ -1527,12 +1520,12 @@ public class Menu {
                                             case 8:
                                             case 9:
                                             case 10: {
-                                                if(p.c.getBagNull() < 4) {
+                                                if (p.c.getBagNull() < 4) {
                                                     Service.chatNPC(p, (short) npcid, "Con cần ít nhất 2 chỗ trống trong hành trang để nhận thưởng.");
                                                     return;
                                                 }
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(539,false));
-                                                p.c.addItemBag(false,ItemTemplate.itemDefault(383,false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(539, false));
+                                                p.c.addItemBag(false, ItemTemplate.itemDefault(383, false));
                                                 p.upluongMessage(3000);
                                                 p.c.upxuMessage(3000000);
                                                 break;
@@ -1567,7 +1560,7 @@ public class Menu {
                             p.conn.sendMessageLog("Lỗi nhận thưởng, vui lòng thử lại sau!");
                             return;
                         } finally {
-                            if(res != null) {
+                            if (res != null) {
                                 try {
                                     res.close();
                                 } catch (Exception e) {
@@ -1578,23 +1571,7 @@ public class Menu {
                         break;
                     }
                     case 5: {
-                        Server.manager.sendTB(p, "Hướng dẫn", "- Thiên Địa Bảng sẽ được mở hàng tuần. Bắt đầu từ thứ 2 và tổng kết vào chủ nhật.\n" +
-                                "- Thiên Địa Bảng sẽ được mở đăng ký và chính phục từ 00h05' đến 23h45' hàng ngày. Mỗi ngày sẽ có 20p để tổng kết ngày, trong thời gian này sẽ không thể đăng ký và chinh phục\n" +
-                                "- Trong thời gian tổng kết nếu chiến thắng trong Chinh phục sẽ không được tính rank." +
-                                "- Vào ngày thường sẽ không giới hạn lượt thách đấu.\n" +
-                                "- Vào Thứ 7 và Chủ Nhật mỗi Ninja sẽ có 5 lượt thách đấu, Thắng sẽ không bị mất lượt, thua sẽ bị trừ 1 lần thách đấu." +
-                                "- Địa Bảng dành cho ninja từ cấp độ 50-69.\n" +
-                                "- Thiên Bảng dành cho ninja từ cấp độ trên 70\n" +
-                                "- Sau khi đăng ký thành công, hãy Chinh Phục ngay để giành lấy vị trí top đầu.\n" +
-                                "- Mỗi lần chiến thắng, nếu vị trí của đối thủ trước bạn, bạn sẽ đổi vị trí của mình cho đối thủ, còn không vị trí của bạn sẽ được giữ nguyên.\n" +
-                                "- Phần thưởng sẽ được trả thưởng vào mỗi tuần mới (Lưu ý: Hãy nhận thưởng ngay trong tuần mới đó, nếu sang tuần sau phần thưởng sẽ bị reset).\n\n" +
-                                "- PHẦN THƯỞNG: \n" +
-                                "Top 1: Hào quang Rank 1 + 2 Bánh Phong Lôi, 2 Bánh Băng Hoả, 2 Nấm x4, 3 Nấm x3, 1 Rương bạch ngân, 2 Bát bảo, 20,000 Lượng, 20,000,000 xu.\n\n" +
-                                "Top 2: Hào quang Rank 2 + 1 Bánh Phong Lôi, 1 Bánh Băng Hoả, 1 Nấm x4, 2 Nấm x3, 1 Rương bạch ngân, 1 Bát bảo, 10,000 Lượng, 10,000,000 xu.\n\n" +
-                                "Top 3: Hào quang Rank 3 + 1 Nấm x4, 1 Nấm x3, 2 Bát bảo, 5,000 Lượng, 5,000,000 xu.\n\n" +
-                                "Top 4-10: 1 Nấm x3, 1 Bát bảo, 3,000 Lượng, 3,000,000 xu.\n\n" +
-                                "Top 11-20: 1,000 Lượng, 1,000,000 xu.\n\n" +
-                                "Còn lại: 500 Lượng, 500,000 xu.");
+                        Server.manager.sendTB(p, "Hướng dẫn", "- Thiên Địa Bảng sẽ được mở hàng tuần. Bắt đầu từ thứ 2 và tổng kết vào chủ nhật.\n" + "- Thiên Địa Bảng sẽ được mở đăng ký và chính phục từ 00h05' đến 23h45' hàng ngày. Mỗi ngày sẽ có 20p để tổng kết ngày, trong thời gian này sẽ không thể đăng ký và chinh phục\n" + "- Trong thời gian tổng kết nếu chiến thắng trong Chinh phục sẽ không được tính rank." + "- Vào ngày thường sẽ không giới hạn lượt thách đấu.\n" + "- Vào Thứ 7 và Chủ Nhật mỗi Ninja sẽ có 5 lượt thách đấu, Thắng sẽ không bị mất lượt, thua sẽ bị trừ 1 lần thách đấu." + "- Địa Bảng dành cho ninja từ cấp độ 50-69.\n" + "- Thiên Bảng dành cho ninja từ cấp độ trên 70\n" + "- Sau khi đăng ký thành công, hãy Chinh Phục ngay để giành lấy vị trí top đầu.\n" + "- Mỗi lần chiến thắng, nếu vị trí của đối thủ trước bạn, bạn sẽ đổi vị trí của mình cho đối thủ, còn không vị trí của bạn sẽ được giữ nguyên.\n" + "- Phần thưởng sẽ được trả thưởng vào mỗi tuần mới (Lưu ý: Hãy nhận thưởng ngay trong tuần mới đó, nếu sang tuần sau phần thưởng sẽ bị reset).\n\n" + "- PHẦN THƯỞNG: \n" + "Top 1: Hào quang Rank 1 + 2 Bánh Phong Lôi, 2 Bánh Băng Hoả, 2 Nấm x4, 3 Nấm x3, 1 Rương bạch ngân, 2 Bát bảo, 20,000 Lượng, 20,000,000 xu.\n\n" + "Top 2: Hào quang Rank 2 + 1 Bánh Phong Lôi, 1 Bánh Băng Hoả, 1 Nấm x4, 2 Nấm x3, 1 Rương bạch ngân, 1 Bát bảo, 10,000 Lượng, 10,000,000 xu.\n\n" + "Top 3: Hào quang Rank 3 + 1 Nấm x4, 1 Nấm x3, 2 Bát bảo, 5,000 Lượng, 5,000,000 xu.\n\n" + "Top 4-10: 1 Nấm x3, 1 Bát bảo, 3,000 Lượng, 3,000,000 xu.\n\n" + "Top 11-20: 1,000 Lượng, 1,000,000 xu.\n\n" + "Còn lại: 500 Lượng, 500,000 xu.");
                         break;
                     }
                     default: {
@@ -1617,7 +1594,7 @@ public class Menu {
                 p.conn.sendMessageLog("Chức năng này không dành cho phân thân.");
                 return;
             }
-            switch(menuId) {
+            switch (menuId) {
                 case 0:
                     //p.requestItem(4);
                     switch (b3) {
@@ -1653,15 +1630,15 @@ public class Menu {
                     }
                     break;
                 case 1:
-                    if(p.c.tileMap.map.getXHD() != -1 || p.c.tileMap.map.LangCo() || p.c.tileMap.map.mapBossTuanLoc() || p.c.tileMap.map.mapLDGT() || p.c.tileMap.map.mapGTC() || p.c.tileMap.map.id == 111 || p.c.tileMap.map.id == 113) {
+                    if (p.c.tileMap.map.getXHD() != -1 || p.c.tileMap.map.LangCo() || p.c.tileMap.map.mapBossTuanLoc() || p.c.tileMap.map.mapLDGT() || p.c.tileMap.map.mapGTC() || p.c.tileMap.map.id == 111 || p.c.tileMap.map.id == 113) {
                         p.c.mapLTD = 22;
                     } else {
                         p.c.mapLTD = p.c.tileMap.map.id;
                     }
-                    Service.chatNPC(p, (short)npcid, "Lưu toạ độ thành công! Khi chết con sẽ được vác xác về đây.");
+                    Service.chatNPC(p, (short) npcid, "Lưu toạ độ thành công! Khi chết con sẽ được vác xác về đây.");
                     break;
                 case 2:
-                    switch(b3) {
+                    switch (b3) {
                         case 0:
                             if (p.c.level < 60) {
                                 p.conn.sendMessageLog("Chức năng này yên cầu trình độ 60");
@@ -1671,7 +1648,7 @@ public class Menu {
                             Map ma = Manager.getMapid(139);
                             TileMap area;
                             int var8;
-                            for(var8 = 0; var8 < ma.area.length; ++var8) {
+                            for (var8 = 0; var8 < ma.area.length; ++var8) {
                                 area = ma.area[var8];
                                 if (area.numplayers < ma.template.maxplayers) {
                                     p.c.tileMap.leave(p);
@@ -1687,7 +1664,7 @@ public class Menu {
                             return;
                     }
                 case 3:
-                    Service.chatNPC(p, (short)npcid, "Ta giữ đồ chưa bao giờ bị mất thứ gì cả!");
+                    Service.chatNPC(p, (short) npcid, "Ta giữ đồ chưa bao giờ bị mất thứ gì cả!");
                     break;
                 default: {
                     Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -1701,11 +1678,11 @@ public class Menu {
     }
 
     public static void npcKenshinto(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        if(p.c.isNhanban) {
+        if (p.c.isNhanban) {
             Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
             return;
         }
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 if (b3 == 0) {
                     p.requestItem(10);
@@ -1761,9 +1738,9 @@ public class Menu {
     }
 
     public static void npcUmayaki_Lang(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Ta kéo xe qua các làng với tốc độ ánh sáng!");
+                Service.chatNPC(p, (short) npcid, "Ta kéo xe qua các làng với tốc độ ánh sáng!");
                 return;
             case 1:
             case 2:
@@ -1775,7 +1752,7 @@ public class Menu {
                 TileMap[] var5 = Manager.getMapid(Map.arrLang[menuId - 1]).area;
                 int var6 = var5.length;
 
-                for(int var7 = 0; var7 < var6; ++var7) {
+                for (int var7 = 0; var7 < var6; ++var7) {
                     TileMap area = var5[var7];
                     if (area.numplayers < Manager.getMapid(Map.arrLang[menuId - 1]).template.maxplayers) {
                         p.c.tileMap.leave(p);
@@ -1791,14 +1768,14 @@ public class Menu {
     }
 
     public static void npcUmayaki_Truong(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
             case 1:
             case 2:
                 TileMap[] var5 = Manager.getMapid(Map.arrTruong[menuId]).area;
                 int var6 = var5.length;
 
-                for(int var7 = 0; var7 < var6; ++var7) {
+                for (int var7 = 0; var7 < var6; ++var7) {
                     TileMap area = var5[var7];
                     if (area.numplayers < Manager.getMapid(Map.arrTruong[menuId]).template.maxplayers) {
                         p.c.tileMap.leave(p);
@@ -1809,7 +1786,7 @@ public class Menu {
 
                 return;
             case 3:
-                Service.chatNPC(p, (short)npcid, "Ta kéo xe qua các trường, không qua quán net đâu!");
+                Service.chatNPC(p, (short) npcid, "Ta kéo xe qua các trường, không qua quán net đâu!");
                 return;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -1819,9 +1796,9 @@ public class Menu {
     }
 
     public static void npcToyotomi(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                switch(b3) {
+                switch (b3) {
                     case 0:
                         Server.manager.sendTB(p, "Top đại gia yên", Rank.getStringBXH(0));
                         return;
@@ -1839,54 +1816,54 @@ public class Menu {
                 }
             case 1:
                 if (p.c.get().nclass > 0) {
-                    Service.chatNPC(p, (short)npcid, "Con đã vào lớp từ trước rồi mà.");
+                    Service.chatNPC(p, (short) npcid, "Con đã vào lớp từ trước rồi mà.");
                 } else if (p.c.get().ItemBody[1] != null) {
-                    Service.chatNPC(p, (short)npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
+                    Service.chatNPC(p, (short) npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
                 } else if (p.c.getBagNull() < 2) {
-                    Service.chatNPC(p, (short)npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
+                    Service.chatNPC(p, (short) npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
                 } else {
                     if (b3 == 0) {
-                        Admission.Admission(p,(byte)1);
+                        Admission.Admission(p, (byte) 1);
                     } else {
                         if (b3 != 1) {
-                            Service.chatNPC(p, (short)npcid, "Chức năng này đang cập nhật!");
+                            Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                             break;
                         }
-                        Admission.Admission(p,(byte)2);
+                        Admission.Admission(p, (byte) 2);
                     }
 
-                    Service.chatNPC(p, (short)npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
+                    Service.chatNPC(p, (short) npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
                 }
                 break;
             case 2:
                 if (p.c.get().nclass != 1 && p.c.get().nclass != 2) {
-                    Service.chatNPC(p, (short)npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
+                    Service.chatNPC(p, (short) npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
                 } else if (b3 == 0) {
                     if (p.c.get().countTayTiemNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
                         return;
                     }
 
                     p.restPpoint();
                     --p.c.get().countTayTiemNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm tiềm năng thành công");
                 } else if (b3 == 1) {
                     if (p.c.get().countTayKyNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
                         return;
                     }
                     p.restSpoint();
                     --p.c.get().countTayKyNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm kỹ năng thành công");
                 }
                 break;
             case 3:
-                Service.chatNPC(p, (short)npcid, "Trường ta là 1 ngôi trường danh giá, chỉ giành cho nhưng ninja tính nóng như kem mà thôi.");
+                Service.chatNPC(p, (short) npcid, "Trường ta là 1 ngôi trường danh giá, chỉ giành cho nhưng ninja tính nóng như kem mà thôi.");
                 break;
             case 4:
-                Service.chatNPC(p, (short)npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
+                Service.chatNPC(p, (short) npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -1897,10 +1874,10 @@ public class Menu {
     }
 
     public static void npcOokamesama(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
 
-                switch(b3) {
+                switch (b3) {
                     case 0:
 
                         Server.manager.sendTB(p, "Top đại gia yên", Rank.getStringBXH(0));
@@ -1922,55 +1899,55 @@ public class Menu {
                 }
             case 1:
                 if (p.c.get().nclass > 0) {
-                    Service.chatNPC(p, (short)npcid, "Con đã vào lớp từ trước rồi mà.");
+                    Service.chatNPC(p, (short) npcid, "Con đã vào lớp từ trước rồi mà.");
                 } else if (p.c.get().ItemBody[1] != null) {
-                    Service.chatNPC(p, (short)npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
+                    Service.chatNPC(p, (short) npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
                 } else if (p.c.getBagNull() < 2) {
-                    Service.chatNPC(p, (short)npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
+                    Service.chatNPC(p, (short) npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
                 } else {
                     if (b3 == 0) {
-                        Admission.Admission(p,(byte)3);
+                        Admission.Admission(p, (byte) 3);
                     } else {
                         if (b3 != 1) {
-                            Service.chatNPC(p, (short)npcid, "Chức năng này đang cập nhật!");
+                            Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                             break;
                         }
 
-                        Admission.Admission(p,(byte)4);
+                        Admission.Admission(p, (byte) 4);
                     }
 
-                    Service.chatNPC(p, (short)npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
+                    Service.chatNPC(p, (short) npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
                 }
                 break;
             case 2:
                 if (p.c.get().nclass != 3 && p.c.get().nclass != 4) {
-                    Service.chatNPC(p, (short)npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
+                    Service.chatNPC(p, (short) npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
                 } else if (b3 == 0) {
                     if (p.c.get().countTayTiemNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
                         return;
                     }
                     p.restPpoint();
                     --p.c.get().countTayTiemNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm tiềm năng thành công");
                 } else if (b3 == 1) {
                     if (p.c.get().countTayKyNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
                         return;
                     }
 
                     p.restSpoint();
                     --p.c.get().countTayKyNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm kỹ năng thành công");
                 }
                 break;
             case 3:
-                Service.chatNPC(p, (short)npcid, "Sao hôm nay trời nóng thế nhỉ, hình như biến đổi khí hậu làm tan hết băng trường ta rồi!");
+                Service.chatNPC(p, (short) npcid, "Sao hôm nay trời nóng thế nhỉ, hình như biến đổi khí hậu làm tan hết băng trường ta rồi!");
                 break;
             case 4:
-                Service.chatNPC(p, (short)npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
+                Service.chatNPC(p, (short) npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -1981,9 +1958,9 @@ public class Menu {
     }
 
     public static void npcKazeto(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                switch(b3) {
+                switch (b3) {
                     case 0:
 
                         Server.manager.sendTB(p, "Top đại gia yên", Rank.getStringBXH(0));
@@ -2005,49 +1982,49 @@ public class Menu {
                 }
             case 1:
                 if (p.c.get().nclass > 0) {
-                    Service.chatNPC(p, (short)npcid, "Con đã vào lớp từ trước rồi mà.");
+                    Service.chatNPC(p, (short) npcid, "Con đã vào lớp từ trước rồi mà.");
                 } else if (p.c.get().ItemBody[1] != null) {
-                    Service.chatNPC(p, (short)npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
+                    Service.chatNPC(p, (short) npcid, "Con cần có 1 tâm hồn trong trắng mới có thể nhập học, hãy tháo vũ khí trên người ra!");
                 } else if (p.c.getBagNull() < 2) {
-                    Service.chatNPC(p, (short)npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
+                    Service.chatNPC(p, (short) npcid, "Hành trang cần phải có ít nhất 2 ô trống mới có thể nhập học!");
                 } else {
                     if (b3 == 0) {
-                        Admission.Admission(p,(byte)5);
+                        Admission.Admission(p, (byte) 5);
                     } else if (b3 == 1) {
-                        Admission.Admission(p,(byte)6);
+                        Admission.Admission(p, (byte) 6);
                     }
 
-                    Service.chatNPC(p, (short)npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
+                    Service.chatNPC(p, (short) npcid, "Hãy chăm chỉ luyện tập, có làm thì mới có ăn con nhé.");
                 }
                 break;
             case 2:
                 if (p.c.get().nclass != 5 && p.c.get().nclass != 6) {
-                    Service.chatNPC(p, (short)npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
+                    Service.chatNPC(p, (short) npcid, "Con không phải học sinh của trường này, ta không thể giúp con tẩy điểm dược rồi.");
                 } else if (b3 == 0) {
                     if (p.c.get().countTayTiemNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm tiềm năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm tiềm năng của con đã hết.");
                         return;
                     }
                     p.restPpoint();
                     --p.c.get().countTayTiemNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm tiềm năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm tiềm năng thành công");
                 } else if (b3 == 1) {
                     if (p.c.get().countTayKyNang < 1) {
-                        Service.chatNPC(p, (short)npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
+                        Service.chatNPC(p, (short) npcid, "Số lần tẩy điểm kỹ năng của con đã hết.");
                         return;
                     }
                     p.restSpoint();
                     --p.c.get().countTayKyNang;
-                    Service.chatNPC(p, (short)npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
+                    Service.chatNPC(p, (short) npcid, "Ta đã giúp con tẩy điểm kỹ năng, hãy nâng điểm thật hợp lý nha.");
                     p.sendAddchatYellow("Tẩy điểm kỹ năng thành công");
                 }
                 break;
             case 3:
-                Service.chatNPC(p, (short)npcid, "Ngươi là người thổi tan băng của trường Ookaza và mang kem về cho trường Hirosaki đúng không?");
+                Service.chatNPC(p, (short) npcid, "Ngươi là người thổi tan băng của trường Ookaza và mang kem về cho trường Hirosaki đúng không?");
                 break;
             case 4:
-                Service.chatNPC(p, (short)npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
+                Service.chatNPC(p, (short) npcid, "Ta đang hơi mệt xíu, ta sẽ giao chiến với con sau nha! Bye bye...");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2058,23 +2035,23 @@ public class Menu {
     }
 
     public static void npcTajima(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Chào mừng con đến với ngôi làng đi đâu cũng phải nhớ về!");
+                Service.chatNPC(p, (short) npcid, "Chào mừng con đến với ngôi làng đi đâu cũng phải nhớ về!");
                 break;
             case 1:
-                Service.chatNPC(p, (short)npcid, "Chức năng Huỷ vật phẩm và nhiệm vụ đang cập nhật!");
+                Service.chatNPC(p, (short) npcid, "Chức năng Huỷ vật phẩm và nhiệm vụ đang cập nhật!");
                 break;
             case 2:
                 if (p.c.timeRemoveClone > System.currentTimeMillis()) {
                     p.toNhanBan();
                 } else {
-                    Service.chatNPC(p, (short)npcid, "Con không có phân thân để sử dụng chức năng này!");
+                    Service.chatNPC(p, (short) npcid, "Con không có phân thân để sử dụng chức năng này!");
                 }
                 break;
             case 3:
                 if (!p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, "Con không phải phân thân để sử dụng chức năng này!");
+                    Service.chatNPC(p, (short) npcid, "Con không phải phân thân để sử dụng chức năng này!");
                     return;
                 }
                 if (!p.c.clone.isDie && p.c.timeRemoveClone > System.currentTimeMillis()) {
@@ -2082,7 +2059,14 @@ public class Menu {
                 }
                 break;
             case 4:
+                Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
+                break;
             case 5:
+                //Kiếm gỗ
+                Item item = ItemTemplate.itemDefault(194);
+                item.sys = 0;
+                p.c.addItemBag(true, item);
+                break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                 break;
@@ -2092,9 +2076,9 @@ public class Menu {
     }
 
     public static void npcRei(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Ngươi đến đây làm gì, không có nhiệm vụ cho ngươi đâu!");
+                Service.chatNPC(p, (short) npcid, "Ngươi đến đây làm gì, không có nhiệm vụ cho ngươi đâu!");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2105,9 +2089,9 @@ public class Menu {
     }
 
     public static void npcKirin(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Ngươi đến đây làm gì, không có nhiệm vụ cho ngươi đâu!");
+                Service.chatNPC(p, (short) npcid, "Ngươi đến đây làm gì, không có nhiệm vụ cho ngươi đâu!");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2118,9 +2102,9 @@ public class Menu {
     }
 
     public static void npcSoba(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Ta sẽ sớm có nhiệm vụ cho con!");
+                Service.chatNPC(p, (short) npcid, "Ta sẽ sớm có nhiệm vụ cho con!");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2131,9 +2115,9 @@ public class Menu {
     }
 
     public static void npcSunoo(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
-                Service.chatNPC(p, (short)npcid, "Khụ khụ...");
+                Service.chatNPC(p, (short) npcid, "Khụ khụ...");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2144,7 +2128,7 @@ public class Menu {
     }
 
     public static void npcGuriin(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                 break;
@@ -2153,7 +2137,7 @@ public class Menu {
     }
 
     public static void npcMatsurugi(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                 break;
@@ -2162,31 +2146,31 @@ public class Menu {
     }
 
     public static void npcOkanechan(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
                 Server.manager.sendTB(p, "Hướng dẫn", "- Để nạp tiền hoặc mua đồ, con hãy lên Website hoặc THAM GIA BOX ZALO của game để nạp nhé!");
                 break;
             case 1:
                 if (p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                    Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
 
-                switch(b3) {
+                switch (b3) {
                     case 0:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 10 && p.c.checkLevel[0] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(223, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1000L);
                                 p.c.luongTN += 1000;
                             } else {
@@ -2194,199 +2178,199 @@ public class Menu {
                             }
 
                             p.c.checkLevel[0] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 1:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 20 && p.c.checkLevel[1] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(224, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1000L);
                                 p.c.luongTN += 1000;
                             } else {
                                 p.upluongMessage(2000L);
                             }
                             p.c.checkLevel[1] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 2:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 30 && p.c.checkLevel[2] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(225, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1000L);
                                 p.c.luongTN += 1000;
                             } else {
                                 p.upluongMessage(2000L);
                             }
                             p.c.checkLevel[2] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 3:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 40 && p.c.checkLevel[3] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(226, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1000L);
                                 p.c.luongTN += 1000;
                             } else {
                                 p.upluongMessage(2000L);
                             }
                             p.c.checkLevel[3] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 4:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 50 && p.c.checkLevel[4] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(227, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1500L);
                                 p.c.luongTN += 1500;
                             } else {
                                 p.upluongMessage(3000L);
                             }
                             p.c.checkLevel[4] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 5:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.getBagNull() < 1) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_ENOUGH_BAG);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_ENOUGH_BAG);
                             return;
                         }
 
                         if (p.c.level >= 70 && p.c.checkLevel[5] == 0) {
                             p.c.addItemBag(false, ItemTemplate.itemDefault(228, true));
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(1500L);
                                 p.c.luongTN += 1500;
                             } else {
                                 p.upluongMessage(3000L);
                             }
                             p.c.checkLevel[5] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 6:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.level >= 90 && p.c.checkLevel[6] == 0) {
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(2500L);
                                 p.c.luongTN += 2500;
                             } else {
                                 p.upluongMessage(5000L);
                             }
                             p.c.checkLevel[6] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 7:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, "Chức năng này không dành cho phân thân!");
+                            Service.chatNPC(p, (short) npcid, "Chức năng này không dành cho phân thân!");
                             return;
                         }
 
                         if (p.c.level >= 110 && p.c.checkLevel[7] == 0) {
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(2500L);
                                 p.c.luongTN += 2500;
                             } else {
                                 p.upluongMessage(5000L);
                             }
                             p.c.checkLevel[7] = 1;
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
                     case 8:
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.level >= 130 && p.c.checkLevel[8] == 0) {
-                            if(p.status == 1) {
+                            if (p.status == 1) {
                                 p.upluongMessage(3500L);
                                 p.c.luongTN += 3500;
                             } else {
                                 p.upluongMessage(7000L);
                             }
                             p.c.checkLevel[8] = 1;
-                            Service.chatNPC(p, (short)npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
+                            Service.chatNPC(p, (short) npcid, "Chúc mừng con đã đạt đến cấp độ mới!");
                         } else {
-                            Service.chatNPC(p, (short)npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
+                            Service.chatNPC(p, (short) npcid, "Trình độ của con không đủ hoặc con đã nhận thưởng rồi!");
                         }
 
                         return;
@@ -2396,7 +2380,7 @@ public class Menu {
                 }
                 break;
             case 2:
-                Service.chatNPC(p, (short)npcid, "Hãy rèn luyện thật chăm chỉ rồi quay lại chỗ ta nhận thưởng nha!");
+                Service.chatNPC(p, (short) npcid, "Hãy rèn luyện thật chăm chỉ rồi quay lại chỗ ta nhận thưởng nha!");
                 break;
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
@@ -2409,31 +2393,31 @@ public class Menu {
     public static void npcRikudou(Player p, byte npcid, byte menuId, byte b3) throws IOException {
         MapTemplate map;
         MobTemplate mob;
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
-                Service.chatNPC(p, (short)npcid, "Hãy chăm chỉ lên nha.");
+                Service.chatNPC(p, (short) npcid, "Hãy chăm chỉ lên nha.");
                 break;
             }
             case 1: {
-                switch(b3) {
+                switch (b3) {
                     case 0: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.level < 10) {
-                            Service.chatNPC(p, (short)npcid, "Con cần đạt cấp độ 10 để có thể nhận nhiệm vụ.");
+                            Service.chatNPC(p, (short) npcid, "Con cần đạt cấp độ 10 để có thể nhận nhiệm vụ.");
                             return;
                         }
 
                         if (p.c.isTaskHangNgay != 0) {
-                            Service.chatNPC(p, (short)npcid, "Ta đã giao nhiệm vụ cho con trước đó rồi");
+                            Service.chatNPC(p, (short) npcid, "Ta đã giao nhiệm vụ cho con trước đó rồi");
                             return;
                         }
 
                         if (p.c.countTaskHangNgay >= 20) {
-                            Service.chatNPC(p, (short)npcid, "Con đã hoàn thành hết nhiệm vụ ngày hôm nay rồi, ngày mai hãy quay lại nha.");
+                            Service.chatNPC(p, (short) npcid, "Con đã hoàn thành hết nhiệm vụ ngày hôm nay rồi, ngày mai hãy quay lại nha.");
                             return;
                         }
 
@@ -2448,8 +2432,8 @@ public class Menu {
                                 p.c.taskHangNgay[4] = map.id;
                                 p.c.isTaskHangNgay = 1;
                                 p.c.countTaskHangNgay++;
-                                Service.getTaskOrder(p.c, (byte)0);
-                                Service.chatNPC(p, (short)npcid, "Đây là nhiệm vụ thứ " + p.c.countTaskHangNgay + "/20 trong ngày của con.");
+                                Service.getTaskOrder(p.c, (byte) 0);
+                                Service.chatNPC(p, (short) npcid, "Đây là nhiệm vụ thứ " + p.c.countTaskHangNgay + "/20 trong ngày của con.");
                             }
                         }
                         break;
@@ -2457,31 +2441,31 @@ public class Menu {
 
                     case 1: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.isTaskHangNgay == 0) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa nhận nhiệm vụ nào cả!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa nhận nhiệm vụ nào cả!");
                             return;
                         }
 
                         p.c.isTaskHangNgay = 0;
                         p.c.countTaskHangNgay--;
                         p.c.taskHangNgay = new int[]{-1, -1, -1, -1, -1, 0, p.c.countTaskHangNgay};
-                        Service.clearTaskOrder(p.c, (byte)0);
-                        Service.chatNPC(p, (short)npcid, "Con đã huỷ nhiệm vụ lần này.");
+                        Service.clearTaskOrder(p.c, (byte) 0);
+                        Service.chatNPC(p, (short) npcid, "Con đã huỷ nhiệm vụ lần này.");
                         break;
                     }
 
                     case 2: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.isTaskHangNgay == 0) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa nhận nhiệm vụ nào cả!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa nhận nhiệm vụ nào cả!");
                             return;
                         }
 
@@ -2491,15 +2475,15 @@ public class Menu {
                         }
 
                         if (p.c.taskHangNgay[1] < p.c.taskHangNgay[2]) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa hoàn thành nhiệm vụ ta giao!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa hoàn thành nhiệm vụ ta giao!");
                             return;
                         }
 
                         p.c.isTaskHangNgay = 0;
                         p.c.taskHangNgay = new int[]{-1, -1, -1, -1, -1, 0, p.c.countTaskHangNgay};
-                        Service.clearTaskOrder(p.c, (byte)0);
+                        Service.clearTaskOrder(p.c, (byte) 0);
                         long luongUp = Util.nextInt(30, 100);
-                        if(p.status == 1) {
+                        if (p.status == 1) {
                             luongUp /= 2;
                             p.c.upxuMessage(150000L);
                             p.upluongMessage(luongUp);
@@ -2514,29 +2498,29 @@ public class Menu {
                             p.c.pointUydanh += 2;
                         }
 
-                        if(p.c.countTaskHangNgay % 2 == 0) {
+                        if (p.c.countTaskHangNgay % 2 == 0) {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 733 : 760, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(2,3);
+                            itemUp.quantity = Util.nextInt(2, 3);
                             p.c.addItemBag(true, itemUp);
                         } else {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 734 : 761, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(2,3);
+                            itemUp.quantity = Util.nextInt(2, 3);
                             p.c.addItemBag(true, itemUp);
                         }
 
-                        Service.chatNPC(p, (short)npcid, "Con hãy nhận lấy phần thưởng của mình.");
+                        Service.chatNPC(p, (short) npcid, "Con hãy nhận lấy phần thưởng của mình.");
                         break;
                     }
 
                     case 3: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
@@ -2544,7 +2528,7 @@ public class Menu {
                             Map ma = Manager.getMapid(p.c.taskHangNgay[4]);
                             int var8;
                             TileMap area;
-                            for(var8 = 0; var8 < ma.area.length; ++var8) {
+                            for (var8 = 0; var8 < ma.area.length; ++var8) {
                                 area = ma.area[var8];
                                 if (area.numplayers < ma.template.maxplayers) {
                                     p.c.tileMap.leave(p);
@@ -2553,7 +2537,7 @@ public class Menu {
                                 }
                             }
                         }
-                        Service.chatNPC(p, (short)npcid, "Con chưa nhận nhiệm vụ nào cả!");
+                        Service.chatNPC(p, (short) npcid, "Con chưa nhận nhiệm vụ nào cả!");
                         break;
                     }
                     default: {
@@ -2563,25 +2547,25 @@ public class Menu {
                 break;
             }
             case 2: {
-                switch(b3) {
+                switch (b3) {
                     case 0: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.level < 30) {
-                            Service.chatNPC(p, (short)npcid, "Con cần đạt cấp độ 30 để có thể nhận nhiệm vụ tà thú.");
+                            Service.chatNPC(p, (short) npcid, "Con cần đạt cấp độ 30 để có thể nhận nhiệm vụ tà thú.");
                             return;
                         }
 
                         if (p.c.isTaskTaThu != 0) {
-                            Service.chatNPC(p, (short)npcid, "Ta đã giao nhiệm vụ cho con trước đó rồi");
+                            Service.chatNPC(p, (short) npcid, "Ta đã giao nhiệm vụ cho con trước đó rồi");
                             return;
                         }
 
                         if (p.c.countTaskTaThu >= 2) {
-                            Service.chatNPC(p, (short)npcid, "Con đã hoàn thành hết nhiệm vụ ngày hôm nay rồi, ngày mai hãy quay lại nha.");
+                            Service.chatNPC(p, (short) npcid, "Con đã hoàn thành hết nhiệm vụ ngày hôm nay rồi, ngày mai hãy quay lại nha.");
                             return;
                         }
                         mob = Service.getMobIdTaThu(p.c.level);
@@ -2595,55 +2579,55 @@ public class Menu {
                                 p.c.taskTaThu[4] = map.id;
                                 p.c.isTaskTaThu = 1;
                                 ++p.c.countTaskTaThu;
-                                Service.getTaskOrder(p.c, (byte)1);
-                                Service.chatNPC(p, (short)npcid, "Hãy hoàn thành nhiệm vụ và trở về đây nhận thưởng.");
+                                Service.getTaskOrder(p.c, (byte) 1);
+                                Service.chatNPC(p, (short) npcid, "Hãy hoàn thành nhiệm vụ và trở về đây nhận thưởng.");
                             }
                         }
                         break;
                     }
                     case 1: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.isTaskTaThu == 0) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa nhận nhiệm vụ nào cả!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa nhận nhiệm vụ nào cả!");
                             return;
                         }
 
-                        Service.clearTaskOrder(p.c, (byte)1);
+                        Service.clearTaskOrder(p.c, (byte) 1);
                         p.c.isTaskTaThu = 0;
                         --p.c.countTaskTaThu;
                         p.c.taskTaThu = new int[]{-1, -1, -1, -1, -1, 0, p.c.countTaskTaThu};
-                        Service.chatNPC(p, (short)npcid, "Con đã huỷ nhiệm vụ lần này.");
+                        Service.chatNPC(p, (short) npcid, "Con đã huỷ nhiệm vụ lần này.");
                         break;
                     }
 
                     case 2: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
 
                         if (p.c.isTaskTaThu == 0) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa nhận nhiệm vụ nào cả!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa nhận nhiệm vụ nào cả!");
                             return;
                         }
 
                         if (p.c.taskTaThu[1] < p.c.taskTaThu[2]) {
-                            Service.chatNPC(p, (short)npcid, "Con chưa hoàn thành nhiệm vụ ta giao!");
+                            Service.chatNPC(p, (short) npcid, "Con chưa hoàn thành nhiệm vụ ta giao!");
                             return;
                         }
 
                         if (p.c.getBagNull() < 2) {
-                            Service.chatNPC(p, (short)npcid, "Hành trang của con không đủ chỗ trống để nhận thưởng");
+                            Service.chatNPC(p, (short) npcid, "Hành trang của con không đủ chỗ trống để nhận thưởng");
                             return;
                         }
 
                         p.c.isTaskTaThu = 0;
                         p.c.taskTaThu = new int[]{-1, -1, -1, -1, -1, 0, p.c.countTaskTaThu};
-                        Service.clearTaskOrder(p.c, (byte)1);
+                        Service.clearTaskOrder(p.c, (byte) 1);
                         if (p.c.pointUydanh < 5000) {
                             p.c.pointUydanh += 3;
                         }
@@ -2652,23 +2636,23 @@ public class Menu {
                         item.isLock = false;
                         p.c.addItemBag(true, item);
 
-                        if(p.c.countTaskTaThu == 1) {
+                        if (p.c.countTaskTaThu == 1) {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 737 : 764, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(20,30);
+                            itemUp.quantity = Util.nextInt(20, 30);
                             p.c.addItemBag(true, itemUp);
                         } else {
                             Item itemUp = ItemTemplate.itemDefault(p.c.gender == 1 ? 738 : 765, true);
                             itemUp.isLock = true;
                             itemUp.isExpires = false;
                             itemUp.expires = -1L;
-                            itemUp.quantity = Util.nextInt(20,30);
+                            itemUp.quantity = Util.nextInt(20, 30);
                             p.c.addItemBag(true, itemUp);
                         }
 
-                        Service.chatNPC(p, (short)npcid, "Con hãy nhận lấy phần thưởng của mình.");
+                        Service.chatNPC(p, (short) npcid, "Con hãy nhận lấy phần thưởng của mình.");
                         break;
                     }
 
@@ -2682,30 +2666,30 @@ public class Menu {
                 switch (b3) {
                     case 0: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
-                        if(ChienTruong.chienTruong == null) {
-                            Service.chatNPC(p, (short)npcid, "Chiến trường chưa được tổ chức.");
+                        if (ChienTruong.chienTruong == null) {
+                            Service.chatNPC(p, (short) npcid, "Chiến trường chưa được tổ chức.");
                             return;
                         }
-                        if(ChienTruong.chienTruong != null) {
-                            if(ChienTruong.chienTruong30 && (p.c.level < 30 || p.c.level >= 50)) {
-                                Service.chatNPC(p, (short)npcid, "Bây giờ là thời gian chiến trường cho cấp độ từ 30 đến 49. Trình độ của con không phù hợp để tham gia.");
+                        if (ChienTruong.chienTruong != null) {
+                            if (ChienTruong.chienTruong30 && (p.c.level < 30 || p.c.level >= 50)) {
+                                Service.chatNPC(p, (short) npcid, "Bây giờ là thời gian chiến trường cho cấp độ từ 30 đến 49. Trình độ của con không phù hợp để tham gia.");
                                 return;
-                            }else if(ChienTruong.chienTruong50 && p.c.level < 50) {
-                                Service.chatNPC(p, (short)npcid, "Bây giờ là thời gian chiến trường cho cấp độ lớn hơn hoặc bằng 50. Trình độ của con không phù hợp để tham gia.");
-                                return;
-                            }
-                            if((ChienTruong.chienTruong30 ||ChienTruong.chienTruong50) && p.c.pheCT == 1) {
-                                Service.chatNPC(p, (short)npcid, "Con đã điểm danh phe Hắc giả trước đó rồi.");
+                            } else if (ChienTruong.chienTruong50 && p.c.level < 50) {
+                                Service.chatNPC(p, (short) npcid, "Bây giờ là thời gian chiến trường cho cấp độ lớn hơn hoặc bằng 50. Trình độ của con không phù hợp để tham gia.");
                                 return;
                             }
-                            if(ChienTruong.start && p.c.pheCT==-1) {
-                                Service.chatNPC(p, (short)npcid, "Chiến trường đã bắt đầu, không thể báo danh.");
+                            if ((ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == 1) {
+                                Service.chatNPC(p, (short) npcid, "Con đã điểm danh phe Hắc giả trước đó rồi.");
                                 return;
                             }
-                            if((ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == -1 ) {
+                            if (ChienTruong.start && p.c.pheCT == -1) {
+                                Service.chatNPC(p, (short) npcid, "Chiến trường đã bắt đầu, không thể báo danh.");
+                                return;
+                            }
+                            if ((ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == -1) {
                                 if (p.c.pointUydanh < 5000) {
                                     p.c.pointUydanh += 10;
                                 }
@@ -2713,12 +2697,12 @@ public class Menu {
                                 p.c.pointCT = 0;
                                 p.c.isTakePoint = 0;
                                 p.c.typepk = 4;
-                                Service.ChangTypePkId(p.c, (byte)4);
+                                Service.ChangTypePkId(p.c, (byte) 4);
                                 Service.updatePointCT(p.c, 0);
-                                if(p.c.party != null) {
+                                if (p.c.party != null) {
                                     p.c.party.removePlayer(p.c.id);
                                 }
-                                if(!ChienTruong.bxhCT.containsKey(p.c)) {
+                                if (!ChienTruong.bxhCT.containsKey(p.c)) {
                                     ChienTruong.bxhCT.put(p.c, p.c.pointCT);
                                 } else {
                                     ChienTruong.bxhCT.replace(p.c, p.c.pointCT);
@@ -2734,12 +2718,12 @@ public class Menu {
                                 return;
                             }
                             p.c.typepk = 4;
-                            Service.ChangTypePkId(p.c, (byte)4);
+                            Service.ChangTypePkId(p.c, (byte) 4);
                             Service.updatePointCT(p.c, 0);
-                            if(p.c.party != null) {
+                            if (p.c.party != null) {
                                 p.c.party.removePlayer(p.c.id);
                             }
-                            if(!ChienTruong.bxhCT.containsKey(p.c)) {
+                            if (!ChienTruong.bxhCT.containsKey(p.c)) {
                                 ChienTruong.bxhCT.put(p.c, p.c.pointCT);
                             } else {
                                 ChienTruong.bxhCT.replace(p.c, p.c.pointCT);
@@ -2757,30 +2741,30 @@ public class Menu {
                     }
                     case 1: {
                         if (p.c.isNhanban) {
-                            Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                            Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                             return;
                         }
-                        if(ChienTruong.chienTruong == null) {
-                            Service.chatNPC(p, (short)npcid, "Chiến trường chưa được tổ chức.");
+                        if (ChienTruong.chienTruong == null) {
+                            Service.chatNPC(p, (short) npcid, "Chiến trường chưa được tổ chức.");
                             return;
                         }
-                        if(ChienTruong.chienTruong != null) {
-                            if( ChienTruong.chienTruong30 && (p.c.level < 30 || p.c.level >= 50)) {
-                                Service.chatNPC(p, (short)npcid, "Bây giờ là thời gian chiến trường cho cấp độ từ 30 đến 49. Trình độ của con không phù hợp để tham gia.");
+                        if (ChienTruong.chienTruong != null) {
+                            if (ChienTruong.chienTruong30 && (p.c.level < 30 || p.c.level >= 50)) {
+                                Service.chatNPC(p, (short) npcid, "Bây giờ là thời gian chiến trường cho cấp độ từ 30 đến 49. Trình độ của con không phù hợp để tham gia.");
                                 return;
-                            }else if(ChienTruong.chienTruong50 && p.c.level < 50) {
-                                Service.chatNPC(p, (short)npcid, "Bây giờ là thời gian chiến trường cho cấp độ lớn hơn hoặc bằng 50. Trình độ của con không phù hợp để tham gia.");
-                                return;
-                            }
-                            if(ChienTruong.start && p.c.pheCT==-1) {
-                                Service.chatNPC(p, (short)npcid, "Chiến trường đã bắt đầu, không thể báo danh.");
+                            } else if (ChienTruong.chienTruong50 && p.c.level < 50) {
+                                Service.chatNPC(p, (short) npcid, "Bây giờ là thời gian chiến trường cho cấp độ lớn hơn hoặc bằng 50. Trình độ của con không phù hợp để tham gia.");
                                 return;
                             }
-                            if((ChienTruong.chienTruong30 ||ChienTruong.chienTruong50) && p.c.pheCT == 0) {
-                                Service.chatNPC(p, (short)npcid, "Con đã điểm danh phe Bạch giả trước đó rồi.");
+                            if (ChienTruong.start && p.c.pheCT == -1) {
+                                Service.chatNPC(p, (short) npcid, "Chiến trường đã bắt đầu, không thể báo danh.");
                                 return;
                             }
-                            if( (ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == -1 ) {
+                            if ((ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == 0) {
+                                Service.chatNPC(p, (short) npcid, "Con đã điểm danh phe Bạch giả trước đó rồi.");
+                                return;
+                            }
+                            if ((ChienTruong.chienTruong30 || ChienTruong.chienTruong50) && p.c.pheCT == -1) {
                                 if (p.c.pointUydanh < 5000) {
                                     p.c.pointUydanh += 10;
                                 }
@@ -2788,12 +2772,12 @@ public class Menu {
                                 p.c.pointCT = 0;
                                 p.c.typepk = 5;
                                 p.c.isTakePoint = 0;
-                                Service.ChangTypePkId(p.c, (byte)5);
+                                Service.ChangTypePkId(p.c, (byte) 5);
                                 Service.updatePointCT(p.c, 0);
-                                if(p.c.party != null) {
+                                if (p.c.party != null) {
                                     p.c.party.removePlayer(p.c.id);
                                 }
-                                if(!ChienTruong.bxhCT.containsKey(p.c)) {
+                                if (!ChienTruong.bxhCT.containsKey(p.c)) {
                                     ChienTruong.bxhCT.put(p.c, p.c.pointCT);
                                 } else {
                                     ChienTruong.bxhCT.replace(p.c, p.c.pointCT);
@@ -2809,12 +2793,12 @@ public class Menu {
                                 return;
                             }
                             p.c.typepk = 5;
-                            Service.ChangTypePkId(p.c, (byte)5);
+                            Service.ChangTypePkId(p.c, (byte) 5);
                             Service.updatePointCT(p.c, 0);
-                            if(p.c.party != null) {
+                            if (p.c.party != null) {
                                 p.c.party.removePlayer(p.c.id);
                             }
-                            if(!ChienTruong.bxhCT.containsKey(p.c)) {
+                            if (!ChienTruong.bxhCT.containsKey(p.c)) {
                                 ChienTruong.bxhCT.put(p.c, p.c.pointCT);
                             } else {
                                 ChienTruong.bxhCT.replace(p.c, p.c.pointCT);
@@ -2831,7 +2815,7 @@ public class Menu {
                         return;
                     }
                     case 2: {
-                        if(ChienTruong.finish) {
+                        if (ChienTruong.finish) {
                             Service.evaluateCT(p.c);
                         } else {
                             Server.manager.sendTB(p, "Kết quả", "Chưa có thông tin.");
@@ -2845,13 +2829,7 @@ public class Menu {
                 break;
             }
             case 4: {
-                Server.manager.sendTB(p, "Hướng dẫn", "Chiến trường được mở 2 lần mỗi ngày.\n" +
-                        "- Chiến trường lv30: giành cho nhân vật level từ 30 đến 45, điểm danh vào lúc 19h và bắt đầu từ 19h30' đến 20h30'.\n" +
-                        "- Chiến trường lv50: giành cho nhân vật level từ 50 trở lên, điểm danh vào lúc 21h và bắt đầu từ 21h30' đến 22h30'.\n\n" +
-                        "+ Top1: 10v đan mỗi loại + 3tr xu.\n" +
-                        "+ Top 2: 7v đan mỗi loại + 2tr xu.\n" +
-                        "+ Top 3: 5v đan mỗi loại + 1tr xu.\n" +
-                        "+ Phe thắng: 1v đan mỗi loại + 500k xu.");
+                Server.manager.sendTB(p, "Hướng dẫn", "Chiến trường được mở 2 lần mỗi ngày.\n" + "- Chiến trường lv30: giành cho nhân vật level từ 30 đến 45, điểm danh vào lúc 19h và bắt đầu từ 19h30' đến 20h30'.\n" + "- Chiến trường lv50: giành cho nhân vật level từ 50 trở lên, điểm danh vào lúc 21h và bắt đầu từ 21h30' đến 22h30'.\n\n" + "+ Top1: 10v đan mỗi loại + 3tr xu.\n" + "+ Top 2: 7v đan mỗi loại + 2tr xu.\n" + "+ Top 3: 5v đan mỗi loại + 1tr xu.\n" + "+ Phe thắng: 1v đan mỗi loại + 500k xu.");
                 break;
             }
             default: {
@@ -2863,7 +2841,7 @@ public class Menu {
     }
 
     public static void npcGoosho(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
                 p.requestItem(14);
                 break;
@@ -2885,13 +2863,13 @@ public class Menu {
     }
 
     public static void npcTruCoQuan(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
-                if(p.c.quantityItemyTotal(260) < 1) {
+                if (p.c.quantityItemyTotal(260) < 1) {
                     p.sendAddchatYellow("Không có chìa khoá để mở cửa này.");
                     return;
                 }
-                if(p.c.tileMap.map.lanhDiaGiaToc != null && p.c.tileMap.map.mapLDGT()) {
+                if (p.c.tileMap.map.lanhDiaGiaToc != null && p.c.tileMap.map.mapLDGT()) {
                     switch (p.c.tileMap.map.id) {
                         case 80: {
 
@@ -2928,20 +2906,17 @@ public class Menu {
                         }
                         case 87: {
                             p.c.tileMap.map.lanhDiaGiaToc.openMap(8, p);
-                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " +
-                                    "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
+                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " + "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
                             break;
                         }
                         case 88: {
                             p.c.tileMap.map.lanhDiaGiaToc.openMap(9, p);
-                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " +
-                                    "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
+                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " + "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
                             break;
                         }
                         case 89: {
                             p.c.tileMap.map.lanhDiaGiaToc.openMap(10, p);
-                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " +
-                                    "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
+                            Server.manager.sendTB(p, "Ghi chú", "Con đường này sẽ dẫn đến cánh cửa nơi ở của một nhân vật huyền bí đã bị lời nguyền cổ " + "xưa yểm bùa rằng sẽ không ai có thể đánh bại được nhân vật huyền bí này. Bạn hãy mau tìm cách hoá giải lời nguyền.");
                             break;
                         }
                         default: {
@@ -2960,23 +2935,23 @@ public class Menu {
     }
 
     public static void npcShinwa(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 p.menuIdAuction = b3;
-                final List<ShinwaTemplate> itemShinwas = ShinwaManager.entrys.get((int)b3);
+                final List<ShinwaTemplate> itemShinwas = ShinwaManager.entrys.get((int) b3);
                 final Message mess = new Message(103);
                 mess.writer().writeByte(b3);
-                if(itemShinwas != null) {
+                if (itemShinwas != null) {
                     mess.writer().writeInt(itemShinwas.size());
                     ShinwaTemplate item;
-                    for(int i = 0; i < itemShinwas.size(); i++) {
+                    for (int i = 0; i < itemShinwas.size(); i++) {
                         item = itemShinwas.get(i);
-                        if(item != null) {
+                        if (item != null) {
                             mess.writer().writeInt(i);
                             mess.writer().writeInt(item.getRemainTime());
                             mess.writer().writeShort(item.getItem().quantity);
                             mess.writer().writeUTF(item.getSeller());
-                            mess.writer().writeInt((int)item.getPrice());
+                            mess.writer().writeInt((int) item.getPrice());
                             mess.writer().writeShort(item.getItem().id);
                         } else {
                             mess.writer().writeInt(i);
@@ -3002,14 +2977,14 @@ public class Menu {
             }
             case 2: {
                 try {
-                    synchronized (ShinwaManager.entrys.get((int)-1)) {
-                        List<ShinwaTemplate> itemShinwas = ShinwaManager.entrys.get((int)-1);
+                    synchronized (ShinwaManager.entrys.get((int) -1)) {
+                        List<ShinwaTemplate> itemShinwas = ShinwaManager.entrys.get((int) -1);
                         List<Integer> ind = new ArrayList<>();
                         ShinwaTemplate item;
-                        for(int i = itemShinwas.size() - 1; i>=0; i--) {
+                        for (int i = itemShinwas.size() - 1; i >= 0; i--) {
                             item = itemShinwas.get(i);
-                            if(item != null && item.getSeller().equals(p.c.name)) {
-                                if(p.c.getBagNull() == 0) {
+                            if (item != null && item.getSeller().equals(p.c.name)) {
+                                if (p.c.getBagNull() == 0) {
                                     Service.chatNPC(p, (short) npcid, "Hành trang không đủ chỗ trống để nhận thêm vật phẩm!");
                                     return;
                                 }
@@ -3017,11 +2992,11 @@ public class Menu {
                                 ind.add(i);
                             }
                         }
-                        if(ind.size() < 1) {
+                        if (ind.size() < 1) {
                             Service.chatNPC(p, (short) npcid, "Con không có đồ để nhận lại!");
                             return;
                         }
-                        for(int i : ind) {
+                        for (int i : ind) {
                             itemShinwas.remove(i);
                         }
                     }
@@ -3038,7 +3013,7 @@ public class Menu {
     }
 
     public static void npcChiHang(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                 break;
@@ -3047,7 +3022,7 @@ public class Menu {
     }
 
     public static void npcRakkii(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 p.requestItem(38);
                 break;
@@ -3102,7 +3077,7 @@ public class Menu {
     }
 
     public static void npcLongDen(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             default: {
                 Service.chatNPC(p, (short) npcid, "Chức năng này đang cập nhật!");
                 break;
@@ -3111,7 +3086,7 @@ public class Menu {
     }
 
     public static void npcKagai(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 1: {
                 switch (b3) {
                     case 0: {
@@ -3251,7 +3226,7 @@ public class Menu {
     public static void npcTienNu(Player p, byte npcid, byte menuId, byte b3) throws IOException {
         if (p.typemenu == 33) {
             Item it;
-            switch(Server.manager.event) {
+            switch (Server.manager.event) {
                 //Hè
                 case 1: {
                     if (p.c.isNhanban) {
@@ -3439,7 +3414,7 @@ public class Menu {
                             break;
                         }
                         case 2: {
-                            if(p.c.pointNoel < 3500) {
+                            if (p.c.pointNoel < 3500) {
                                 Service.chatNPC(p, (short) npcid, "Con cần ít nhất 3500 điểm để đổi mặt nạ 7 ngày.");
                                 return;
                             }
@@ -3453,7 +3428,7 @@ public class Menu {
                             break;
                         }
                         case 3: {
-                            if(p.c.pointNoel < 5000) {
+                            if (p.c.pointNoel < 5000) {
                                 Service.chatNPC(p, (short) npcid, "Con cần ít nhất 5000 điểm để đổi pet Hoả long 7 ngày.");
                                 return;
                             }
@@ -3468,21 +3443,17 @@ public class Menu {
                         }
                         case 4: {
                             String a = "";
-                            if(Rank.bxhBossTuanLoc.isEmpty()) {
+                            if (Rank.bxhBossTuanLoc.isEmpty()) {
                                 a = "Chưa có thông tin.";
                             }
-                            for(Rank.Entry3 item : Rank.bxhBossTuanLoc) {
-                                a += item.index +". "+item.name+": "+item.point+" điểm\n";
+                            for (Rank.Entry3 item : Rank.bxhBossTuanLoc) {
+                                a += item.index + ". " + item.name + ": " + item.point + " điểm\n";
                             }
                             Server.manager.sendTB(p, "BXH Diệt Boss", a);
                             break;
                         }
                         case 5: {
-                            Server.manager.sendTB(p, "Hướng dẫn", "- Số điểm hiện tại của bạn là: "+p.c.pointNoel+"\n" +
-                                    "- Kiểm điểm sự kiện bằng cách nhận quà hàng ngày tại Cây thông (+1 điểm), trang trí cây thông (+10 điểm), giết boss Tuần lộc (+1 điểm).\n" +
-                                    "- Dùng điểm để dổi lấy vật phẩm quý giá: Mặt nạ Super Broly/Onna Bugeisha 7 ngày (3500 điểm), Pet Hoả long 7 ngày (5000 điểm).\n" +
-                                    "- Bánh Chocolate: 2 Bơ + 2 Kem + 3 Đường + 1 Chocolate + 5000 yên.\n" +
-                                    "- Bánh Dâu tây: 3 Bơ + 3 Kem + 4 Đường + 1 Dâu tây + 10000 yên.\n");
+                            Server.manager.sendTB(p, "Hướng dẫn", "- Số điểm hiện tại của bạn là: " + p.c.pointNoel + "\n" + "- Kiểm điểm sự kiện bằng cách nhận quà hàng ngày tại Cây thông (+1 điểm), trang trí cây thông (+10 điểm), giết boss Tuần lộc (+1 điểm).\n" + "- Dùng điểm để dổi lấy vật phẩm quý giá: Mặt nạ Super Broly/Onna Bugeisha 7 ngày (3500 điểm), Pet Hoả long 7 ngày (5000 điểm).\n" + "- Bánh Chocolate: 2 Bơ + 2 Kem + 3 Đường + 1 Chocolate + 5000 yên.\n" + "- Bánh Dâu tây: 3 Bơ + 3 Kem + 4 Đường + 1 Dâu tây + 10000 yên.\n");
                             break;
                         }
                         default: {
@@ -3501,31 +3472,31 @@ public class Menu {
     }
 
     public static void npcCayThong(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 if (p.c.isNhanban) {
                     p.conn.sendMessageLog(Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.c.level < 40) {
+                if (p.c.level < 40) {
                     p.conn.sendMessageLog("Nhân vật phải trên level 40 mới có thể nhận quà và trang trí.");
                     return;
                 }
-                if(p.c.isNhanQuaNoel < 1) {
+                if (p.c.isNhanQuaNoel < 1) {
                     p.conn.sendMessageLog("Hôm nay bạn đã nhận quà rồi.");
                     return;
                 }
-                if(p.c.getBagNull() < 1) {
+                if (p.c.getBagNull() < 1) {
                     p.conn.sendMessageLog("Hành trang không đủ chỗ trống để nhận quà");
                     return;
                 }
                 p.c.isNhanQuaNoel = 0;
                 p.c.pointNoel++;
-                int random = Util.nextInt(0,2);
+                int random = Util.nextInt(0, 2);
                 switch (random) {
                     case 0: {
-                        int yen = Util.nextInt(500000,1000000);
-                        if(p.status == 1) {
+                        int yen = Util.nextInt(500000, 1000000);
+                        if (p.status == 1) {
                             yen /= 2;
                             p.c.yenTN += yen;
                         }
@@ -3534,8 +3505,8 @@ public class Menu {
                         break;
                     }
                     case 1: {
-                        int xu = Util.nextInt(100000,300000);
-                        if(p.status == 1) {
+                        int xu = Util.nextInt(100000, 300000);
+                        if (p.status == 1) {
                             xu /= 2;
                             p.c.xuTN += xu;
                         }
@@ -3544,8 +3515,8 @@ public class Menu {
                         break;
                     }
                     case 2: {
-                        int luong = Util.nextInt(50,150);
-                        if(p.status == 1) {
+                        int luong = Util.nextInt(50, 150);
+                        if (p.status == 1) {
                             luong /= 2;
                             p.c.luongTN += luong;
                         }
@@ -3560,18 +3531,18 @@ public class Menu {
             }
             case 1: {
                 if (p.c.isNhanban) {
-                    p.conn.sendMessageLog( Language.NOT_FOR_PHAN_THAN);
+                    p.conn.sendMessageLog(Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.c.level < 40) {
+                if (p.c.level < 40) {
                     p.conn.sendMessageLog("Nhân vật phải trên level 40 mới có thể nhận quà và trang trí.");
                     return;
                 }
-                if(p.c.quantityItemyTotal(673) < 1) {
+                if (p.c.quantityItemyTotal(673) < 1) {
                     p.conn.sendMessageLog("Bạn không có đủ Quà trang trí để trang trí cây thông Noel.");
                     return;
                 }
-                if(p.c.getBagNull() < 1) {
+                if (p.c.getBagNull() < 1) {
                     p.conn.sendMessageLog("Hành trang không đủ chỗ trống để nhận quà");
                     return;
                 }
@@ -3579,7 +3550,7 @@ public class Menu {
                 p.c.removeItemBag(p.c.getIndexBagid(673, false), 1);
                 Item it;
                 int per = Util.nextInt(300);
-                if(per<1) {
+                if (per < 1) {
                     it = ItemTemplate.itemDefault(383);
                 } else if (per >= 1 && per <= 3) {
                     it = ItemTemplate.itemDefault(775);
@@ -3600,9 +3571,9 @@ public class Menu {
     }
 
     public static void npcOngGiaNoen(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
-                if(Server.manager.event != 3) {
+                if (Server.manager.event != 3) {
                     Service.chatNPC(p, (short) npcid, "Hiện tại không trong thời gian sự kiện Noel");
                     return;
                 }
@@ -3610,15 +3581,15 @@ public class Menu {
                     Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.c.quantityItemyTotal(775) < 1000) {
+                if (p.c.quantityItemyTotal(775) < 1000) {
                     Service.chatNPC(p, (short) npcid, "Bạn không có đủ 1000 hoa tuyết để đổi mặt nạ.");
                     return;
                 }
-                if(p.c.getBagNull() < 1) {
+                if (p.c.getBagNull() < 1) {
                     Service.chatNPC(p, (short) npcid, "Hành trang không đủ chỗ trống để nhận quà");
                     return;
                 }
-                p.c.removeItemBag( p.c.getIndexBagid(775, false), 1000);
+                p.c.removeItemBag(p.c.getIndexBagid(775, false), 1000);
                 Item it = ItemTemplate.itemDefault(774);
                 it.isLock = false;
                 it.quantity = 1;
@@ -3628,7 +3599,7 @@ public class Menu {
                 break;
             }
             case 1: {
-                if(Server.manager.event != 3) {
+                if (Server.manager.event != 3) {
                     Service.chatNPC(p, (short) npcid, "Hiện tại không trong thời gian diễn ra sự kiện Noel");
                     return;
                 }
@@ -3643,7 +3614,7 @@ public class Menu {
     }
 
     public static void npcVuaHung(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 Service.sendInputDialog(p, (short) 9, "Nhập số COIN muốn đổi.");
                 break;
@@ -3656,10 +3627,10 @@ public class Menu {
     }
 
     public static void npcKanata_LoiDai(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0:
                 if (p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                    Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
 
@@ -3675,16 +3646,16 @@ public class Menu {
                 break;
             case 1:
                 if (p.c.isNhanban) {
-                    Service.chatNPC(p, (short)npcid, Language.NOT_FOR_PHAN_THAN);
+                    Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
 
                 if (p.c.party != null && p.c.party.charID != p.c.id) {
-                    Service.chatNPC(p, (short)npcid, "Con không phải nhóm trưởng, không thể đặt cược");
+                    Service.chatNPC(p, (short) npcid, "Con không phải nhóm trưởng, không thể đặt cược");
                     return;
                 }
 
-                Service.sendInputDialog(p, (short)3, "Đặt tiền cược (lớn hơn 1000 xu và chia hết cho 50)");
+                Service.sendInputDialog(p, (short) 3, "Đặt tiền cược (lớn hơn 1000 xu và chia hết cho 50)");
                 break;
             case 2:
                 Server.manager.sendTB(p, "Hướng dẫn", "- Mời đối thủ vào lôi đài\n\n- Đặt tiền cược (Lớn hơn 1000 xu và chia hết cho 50)\n\n- Khi cả 2 đã đặt tiền cược, và số tiền phải thống nhất bằng nhau thì trận so tài mới có thể bắt đầu.\n\n- Khi đã đặt tiền cược, nhưng thoát, mất kết nối hoặc thua cuộc, thì người chơi còn lại sẽ giành chiến thắng\n\n- Số tiền thắng sẽ nhận được sẽ bị trừ phí 5%\n\n- Nếu hết thời gian mà chưa có ai giành chiến thắng thì cuộc so tài sẽ tính hoà, và mỗi người sẽ nhận lại số tiền của mình với mức phí bị trừ 1%");
@@ -3698,7 +3669,7 @@ public class Menu {
     }
 
     public static void npcAdmin(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 if (p.c.isNhanban) {
                     Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
@@ -3706,7 +3677,7 @@ public class Menu {
                 }
 
                 if (p.c.isDiemDanh == 0) {
-                    if(p.status == 1) {
+                    if (p.status == 1) {
                         p.upluongMessage(250L);
                         p.c.luongTN += 250;
                     } else {
@@ -3731,7 +3702,7 @@ public class Menu {
                 }
 
                 if (p.c.countHangDong >= 2) {
-                    if(p.status == 1) {
+                    if (p.status == 1) {
                         p.upluongMessage(750L);
                         p.c.luongTN += 750;
                     } else {
@@ -3757,11 +3728,11 @@ public class Menu {
 
                 if (p.c.level == 1) {
                     p.updateExp(Level.getMaxExp(10));
-                    if(p.status == 1) {
+                    if (p.status == 1) {
                         p.upluongMessage(10000L);
                         p.c.upxuMessage(25000000L);
                         p.c.upyenMessage(25000000L);
-                        p.c.luongTN +=  10000;
+                        p.c.luongTN += 10000;
                         p.c.yenTN += 50000000;
                         p.c.xuTN += 50000000;
                         p.c.addItemBag(false, ItemTemplate.itemDefault(222, true));
@@ -3789,11 +3760,11 @@ public class Menu {
                     Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.c.level == 1) {
+                if (p.c.level == 1) {
                     p.conn.sendMessageLog("Không thể thực hiện thao tác này..");
                     return;
                 }
-                if(p.c.get().exptype == 1) {
+                if (p.c.get().exptype == 1) {
                     p.c.get().exptype = 0;
                     p.sendAddchatYellow("Đã tắt nhận exp.");
                 } else {
@@ -3807,13 +3778,13 @@ public class Menu {
                     Service.chatNPC(p, (short) npcid, Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.status == 1) {
+                if (p.status == 1) {
                     Service.chatNPC(p, (short) npcid, "Tài khoản của con chưa được nâng cấp lên CHÍNH THỨC, không thể nhận lại phần thưởng.");
                     return;
                 }
                 switch (b3) {
                     case 0: {
-                        if(p.c.yenTN <= 0) {
+                        if (p.c.yenTN <= 0) {
                             Service.chatNPC(p, (short) npcid, "Con không có yên lưu trữ để nhận lại.");
                             return;
                         }
@@ -3822,7 +3793,7 @@ public class Menu {
                         break;
                     }
                     case 1: {
-                        if(p.c.xuTN <= 0) {
+                        if (p.c.xuTN <= 0) {
                             Service.chatNPC(p, (short) npcid, "Con không có xu lưu trữ để nhận lại.");
                             return;
                         }
@@ -3831,7 +3802,7 @@ public class Menu {
                         break;
                     }
                     case 2: {
-                        if(p.c.luongTN <= 0) {
+                        if (p.c.luongTN <= 0) {
                             Service.chatNPC(p, (short) npcid, "Con không có lượng lưu trữ để nhận lại.");
                             return;
                         }
@@ -3840,7 +3811,7 @@ public class Menu {
                         break;
                     }
                     case 3: {
-                        if(p.c.expTN <= 0) {
+                        if (p.c.expTN <= 0) {
                             Service.chatNPC(p, (short) npcid, "Con không có kinh nghiệm lưu trữ để nhận lại.");
                             return;
                         }
@@ -3855,11 +3826,11 @@ public class Menu {
                 break;
             }
             case 5: {
-                if(p.c.isNhanban) {
+                if (p.c.isNhanban) {
                     p.conn.sendMessageLog(Language.NOT_FOR_PHAN_THAN);
                     return;
                 }
-                if(p.c.clone == null) {
+                if (p.c.clone == null) {
                     Service.chatNPC(p, (short) npcid, "Con không có phân thân để sử dụng chức năng này.");
                     return;
                 }
@@ -3879,10 +3850,10 @@ public class Menu {
     }
 
     public static void npcRikudou_ChienTruong(Player p, byte npcid, byte menuId, byte b3) throws IOException {
-        switch(menuId) {
+        switch (menuId) {
             case 0: {
                 p.c.typepk = 0;
-                Service.ChangTypePkId(p.c, (byte)0);
+                Service.ChangTypePkId(p.c, (byte) 0);
                 p.c.tileMap.leave(p);
                 p.restCave();
                 p.changeMap(p.c.mapLTD);
@@ -3903,10 +3874,10 @@ public class Menu {
     public static void npcKagai_GTC(Player p, byte npcid, byte menuId, byte b3) throws IOException {
         switch (p.c.mapid) {
             case 117: {
-                switch(menuId) {
+                switch (menuId) {
                     case 0: {
                         p.c.typepk = 0;
-                        Service.ChangTypePkId(p.c, (byte)0);
+                        Service.ChangTypePkId(p.c, (byte) 0);
                         p.c.tileMap.leave(p);
                         p.restCave();
                         p.changeMap(p.c.mapLTD);
@@ -3914,7 +3885,7 @@ public class Menu {
                     }
                     case 1: {
                         Service.chatNPC(p, (short) npcid, "Đặt cược");
-                        Service.sendInputDialog(p, (short)8, "Đặt tiền cược (lớn hơn 1000 xu và chia hết cho 50)");
+                        Service.sendInputDialog(p, (short) 8, "Đặt tiền cược (lớn hơn 1000 xu và chia hết cho 50)");
                         break;
                     }
 
@@ -3927,10 +3898,10 @@ public class Menu {
             }
             case 118:
             case 119: {
-                switch(menuId) {
+                switch (menuId) {
                     case 0: {
                         p.c.typepk = 0;
-                        Service.ChangTypePkId(p.c, (byte)0);
+                        Service.ChangTypePkId(p.c, (byte) 0);
                         p.c.tileMap.leave(p);
                         p.restCave();
                         p.changeMap(p.c.mapLTD);
